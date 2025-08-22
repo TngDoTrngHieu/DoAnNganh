@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-s32q8p3$^40&aoa+u_8$8u2&=7k%=$7xud%67#3bj$90c+jn7_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']  # Dev: allow all. Set explicit hosts in production.
 
 # Application definition
 
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'oauth2_provider',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Web.wsgi.application'
-import cloudinary
 import cloudinary.uploader
-from cloudinary.utils import cloudinary_url
 
 cloudinary.config(
     cloud_name="dyuhodi7a",
@@ -94,13 +92,14 @@ AUTH_USER_MODEL = 'webgames.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gamedb',   # Đổi thành tên DB bạn tạo
+        'NAME': 'gamedb',  # Đổi thành tên DB bạn tạo
         'USER': 'root',
         'PASSWORD': 'hieu',
         'PORT': '',
     }
 }
 import pymysql
+
 pymysql.install_as_MySQLdb()
 
 # Password validation
@@ -121,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -133,10 +131,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 import os
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'webgames', 'static'),
@@ -158,3 +156,68 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+# cấu hình của cloudFlare
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = "886a91940a0b94f3f43982afc27ad27c"
+AWS_SECRET_ACCESS_KEY = "7b270aa21d5e912cdf09b849384f2f2936a663328a9f700dcc68dc6d02ef9abb"
+AWS_S3_ENDPOINT_URL = "https://ec2111749f176fc72798d6c128a95a84.r2.cloudflarestorage.com"
+TOKEN = "SulRuERe_IbBJaNbuzt5bFn0eyyF24ToZ30I4A6S"
+AWS_STORAGE_BUCKET_NAME = "webgame"
+AWS_PUBLIC_ENDPOINT = "https://pub-32420dd9b39a4a79a8b2111e46662b2f.r2.dev"
+AWS_S3_REGION_NAME = "auto"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+
+
+
+FRONTEND_BASE_URL = os.getenv('FRONTEND_BASE_URL', 'http://localhost:3000')
+BACKEND_BASE_URL = os.getenv('BACKEND_BASE_URL', '')
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://*.ngrok-free.app"
+]
+
+
+import os
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {name} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',  # Hoặc DEBUG để log chi tiết hơn
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'momo.log'),
+            'formatter': 'verbose',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        '': {  # root logger
+            'handlers': ['console', 'file'],
+            'level': 'INFO',  # Hoặc DEBUG
+            'propagate': True,
+        },
+        'your_app_name': {  # logger riêng cho app của bạn
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+

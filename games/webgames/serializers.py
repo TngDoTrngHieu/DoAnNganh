@@ -1,4 +1,4 @@
-from webgames.models import Tag,Game,Developer,Review,OrderItem,Order,Category,Account,User
+from webgames.models import Tag,Game,Developer,Review,OrderItem,Order,Category,Account,User,Payment
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from django.db import transaction
@@ -57,7 +57,11 @@ class AccountRegisterSerializer(serializers.ModelSerializer):
 
         return account
 
-
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = ['id', 'amount', 'status', 'transaction_id', 'payment_url', 'payment_date']
+        read_only_fields = fields
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -90,6 +94,26 @@ class GameSerializer(serializers.ModelSerializer):
             return obj.file.url if obj.file else None
         except Exception:
             return None
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    game_title = serializers.CharField(source='game.title', read_only=True)
+
+    class Meta:
+        model = OrderItem
+        fields = ['id', 'game', 'game_title', 'price', 'created_at']
+        read_only_fields = ['id', 'game_title', 'created_at']
+
+class OrderSerializer(serializers.ModelSerializer):
+    items = OrderItemSerializer(many=True, read_only=True)
+    total_amount = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True)
+
+    class Meta:
+        model = Order
+        fields = [
+            'id', 'status', 'payment_method', 'note', 'items', 'total_amount', 'created_at', 'update_at'
+        ]
+        read_only_fields = ['id', 'items', 'total_amount', 'created_at', 'update_at']
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     customer = serializers.StringRelatedField(read_only=True)
