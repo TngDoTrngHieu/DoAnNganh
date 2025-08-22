@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from cloudinary.models import CloudinaryField
 from django.core.validators import RegexValidator
+from storages.backends.s3boto3 import S3Boto3Storage
 
 # ----- BASE MODEL -----
 class BaseModel(models.Model):
@@ -51,7 +52,15 @@ class Game(BaseModel):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     categories = models.ManyToManyField(Category, related_name='games')
     image = CloudinaryField('image', null=True, blank=True)  # Cover image
-    file = CloudinaryField('file', resource_type='raw', null=True, blank=True)    # Game file (installer, zip, etc.)
+    file = models.FileField(
+        storage=S3Boto3Storage(
+            bucket_name="webgame",
+            custom_domain=None
+        ),
+        upload_to="games/files/",
+        null=True,
+        blank=True
+    )
     tags = models.ManyToManyField(Tag, related_name="games")
     view_count = models.PositiveIntegerField(default=0)
     purchase_count = models.PositiveIntegerField(default=0)
@@ -113,6 +122,23 @@ class Review(BaseModel):
     def __str__(self):
         return f"Review {self.rating} sao cho {self.game.title}"
 
+class Payment(BaseModel):
+    class Status(models.TextChoices):
+        PENDING = 'PENDING', 'Chờ thanh toán'
+        PROCESSING = 'PROCESSING', 'Đang xử lý'
+        COMPLETED = 'COMPLETED', 'Đã thanh toán'
+        FAILED = 'FAILED', 'Thanh toán thất bại'
+        REFUNDED = 'REFUNDED', 'Đã hoàn tiền'
+
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='payment')
+    amount = models.DecimalField(max_digits=12, decimal_places=2)
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
+    transaction_id = models.CharField(max_length=255, blank=True, null=True)
+    payment_url = models.CharField(max_length=255, blank=True, null=True)
+    payment_date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Payment for Order #{self.order.id}"
 
 
 class Developer(BaseModel):

@@ -18,6 +18,13 @@ export const endpoints = {
   'register': "users/",
   'games': "games/",
   'gameDetail': (id) => `games/${id}/`,
+  'categories': "categories/",
+  'tags': "tags/",
+  'orders': "orders/",
+  'paymentsMomo': "payments/momo/",
+  'gameDownload': (id) => `games/${id}/download/`,
+  'reviews': 'reviews/',
+  'createReview': 'reviews/create_review/',
 
 };
 
@@ -74,6 +81,42 @@ export const loginUser = async ({ username, password }) => {
 // Lấy thông tin người dùng hiện tại
 export const getCurrentUser = async () => {
   return authApi().get(endpoints.currentUser);
+};
+
+// Lấy danh sách game với filter
+export const getGames = async (params) => {
+  return api.get(endpoints.games, { params });
+};
+
+// Lấy tags
+export const getTags = async () => {
+  return api.get(endpoints.tags);
+};
+
+// Tạo đơn hàng từ danh sách game_ids
+export const createOrder = async (gameIds) => {
+  return authApi().post(endpoints.orders, { game_ids: gameIds });
+};
+
+// Tạo thanh toán MoMo cho order
+export const createMomoPayment = async (orderId) => {
+  const redirectUrl = `${window.location.origin}/thank-you`;
+  return authApi().post(endpoints.paymentsMomo, { order_id: orderId, redirect_url: redirectUrl });
+};
+
+// Kiểm tra và lấy link tải nếu đã mua
+export const getDownloadLink = async (gameId) => {
+  return authApi().get(endpoints.gameDownload(gameId));
+};
+
+// Lấy danh sách đánh giá theo game
+export const getReviews = async (gameId) => {
+  return api.get(endpoints.reviews, { params: { game_id: gameId } });
+};
+
+// Tạo đánh giá (cần đã mua)
+export const createReviewApi = async ({ game, rating, comment }) => {
+  return authApi().post(endpoints.createReview, { game, rating, comment });
 };
 
 export default api;

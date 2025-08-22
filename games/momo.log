@@ -1,0 +1,505 @@
+[2025-08-22 02:18:03,580] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 02:20:36,425] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 02:20:37,975] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 02:20:37,980] WARNING django.request Unauthorized: /games/3/download/
+[2025-08-22 02:20:44,599] WARNING django.request Forbidden: /games/3/download/
+[2025-08-22 02:20:46,767] ERROR webgames.views Error creating MoMo payment: View.as_view.<locals>.view() missing 1 required positional argument: 'request'
+Traceback (most recent call last):
+  File "E:\WebGame\games\webgames\views.py", line 102, in create_momo_payment_view
+    momo_response = create_momo_payment(
+        amount=amount,
+    ...<4 lines>...
+        momo_order_id=momo_order_id
+    )
+TypeError: View.as_view.<locals>.view() missing 1 required positional argument: 'request'
+[2025-08-22 02:20:46,770] ERROR django.request Internal Server Error: /payments/momo/
+[2025-08-22 02:20:50,722] ERROR webgames.views Error creating MoMo payment: View.as_view.<locals>.view() missing 1 required positional argument: 'request'
+Traceback (most recent call last):
+  File "E:\WebGame\games\webgames\views.py", line 102, in create_momo_payment_view
+    momo_response = create_momo_payment(
+        amount=amount,
+    ...<4 lines>...
+        momo_order_id=momo_order_id
+    )
+TypeError: View.as_view.<locals>.view() missing 1 required positional argument: 'request'
+[2025-08-22 02:20:50,724] ERROR django.request Internal Server Error: /payments/momo/
+[2025-08-22 02:21:25,929] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 02:21:27,399] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 02:21:29,494] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 02:21:29,495] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_67_4dcec0bc","requestId":"4dcec0bc-09cf-4f62-8a8a-be4990c7f350","amount":100000,"responseTime":1755804089811,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl82N180ZGNlYzBiYw&s=f2620aa85d081e8b73567fbc93648753e6545686eb42f70fb9e9a9dd7d428e7d","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl82N180ZGNlYzBiYw&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl82N180ZGNlYzBiYw&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl82N180ZGNlYzBiYw&v=3.0"}
+[2025-08-22 02:31:59,866] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 02:36:04,060] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 02:36:06,006] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 02:36:14,119] WARNING django.request Unauthorized: /games/3/download/
+[2025-08-22 02:36:14,119] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 02:36:22,091] WARNING django.request Forbidden: /games/3/download/
+[2025-08-22 02:36:24,130] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 02:36:24,131] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_68_4506b7cc","requestId":"4506b7cc-4179-4cac-923e-84e17914f8fe","amount":100000,"responseTime":1755804984456,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl82OF80NTA2YjdjYw&s=d11f9dac699a7e6cb7140a49bff7eb9e8b837f7b045dcd590a4f38138dbdb205","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl82OF80NTA2YjdjYw&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl82OF80NTA2YjdjYw&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl82OF80NTA2YjdjYw&v=3.0"}
+[2025-08-22 02:36:42,472] INFO webgames.webhook [MoMo Webhook] Calculated signature: ee09e67d1e8b418919af45fe710a13a04892fa546e13044eced98fb6dc2c46de
+[2025-08-22 02:36:42,472] INFO webgames.webhook [MoMo Webhook] Received signature: 40e63dee5227d59d449f298fdef84c9fa0c9ccc4633eb9047605f10b884b2221
+[2025-08-22 02:36:42,472] ERROR webgames.webhook [MoMo Webhook] Signature verification failed!
+[2025-08-22 02:36:42,473] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 02:39:41,162] WARNING django.request Forbidden: /games/3/download/
+[2025-08-22 02:39:43,400] WARNING django.request Forbidden: /games/3/download/
+[2025-08-22 02:53:35,260] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 02:53:36,706] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 02:53:42,025] WARNING django.request Unauthorized: /orders/
+[2025-08-22 02:53:50,003] WARNING django.request Forbidden: /games/1/download/
+[2025-08-22 02:53:54,406] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 02:53:54,406] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_69_920c50ce","requestId":"920c50ce-dca2-4415-9dbb-f7a77195274a","amount":180000,"responseTime":1755806034736,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl82OV85MjBjNTBjZQ&s=f100495f964e051a0560071a1b1ebce76f30f768371009e2111517e0a2ee1467","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl82OV85MjBjNTBjZQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl82OV85MjBjNTBjZQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl82OV85MjBjNTBjZQ&v=3.0"}
+[2025-08-22 02:54:37,034] INFO webgames.webhook [MoMo Webhook] --- Received webhook ---
+[2025-08-22 02:54:37,034] INFO webgames.webhook [MoMo Webhook] Method: POST
+[2025-08-22 02:54:37,035] INFO webgames.webhook [MoMo Webhook] Headers: {'Content-Length': '387', 'Content-Type': 'application/json', 'Host': '3bbcd74fb12b.ngrok-free.app', 'User-Agent': 'Apache-HttpClient/4.5.13 (Java/15.0.2)', 'Accept': 'application/json, application/x-www-form-urlencoded', 'Accept-Encoding': 'gzip,deflate', 'X-Forwarded-For': '118.68.171.198', 'X-Forwarded-Host': '3bbcd74fb12b.ngrok-free.app', 'X-Forwarded-Proto': 'https'}
+[2025-08-22 02:54:37,035] INFO webgames.webhook [MoMo Webhook] Calculated signature: 0388806a0cffcda28f5697d2c4f9fc79d759dd6b83ef86448d49064dd36a19b9
+[2025-08-22 02:54:37,035] INFO webgames.webhook [MoMo Webhook] Received signature: 1a9f4fe92596aceb0b46b48518c3a1bf36d0035f1369d1f316d4b51c21cc0bfb
+[2025-08-22 02:54:37,036] ERROR webgames.webhook [MoMo Webhook] Signature verification FAILED!
+[2025-08-22 02:54:37,036] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 02:56:39,607] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 02:56:41,033] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 02:56:47,776] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 02:56:47,776] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_70_848b9ce2","requestId":"848b9ce2-c12f-4bee-a8be-0a7b617e81ff","amount":180000,"responseTime":1755806208107,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83MF84NDhiOWNlMg&s=d5c110aa954fa33b9fb9f918895364fee6bfbccdce1a77aa7c88ea163c1074d9","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83MF84NDhiOWNlMg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83MF84NDhiOWNlMg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83MF84NDhiOWNlMg&v=3.0"}
+[2025-08-22 02:57:24,298] INFO webgames.webhook [MoMo Webhook] --- Received webhook ---
+[2025-08-22 02:57:24,298] INFO webgames.webhook [MoMo Webhook] Method: POST
+[2025-08-22 02:57:24,299] INFO webgames.webhook [MoMo Webhook] Headers: {'Content-Length': '387', 'Content-Type': 'application/json', 'Host': '3bbcd74fb12b.ngrok-free.app', 'User-Agent': 'Apache-HttpClient/4.5.13 (Java/15.0.2)', 'Accept': 'application/json, application/x-www-form-urlencoded', 'Accept-Encoding': 'gzip,deflate', 'X-Forwarded-For': '118.68.171.198', 'X-Forwarded-Host': '3bbcd74fb12b.ngrok-free.app', 'X-Forwarded-Proto': 'https'}
+[2025-08-22 02:57:24,299] INFO webgames.webhook [MoMo Webhook] Calculated signature: 33c540756d691092178664d0af8b650a64f496d00563559ccb334a791a6a50b7
+[2025-08-22 02:57:24,299] INFO webgames.webhook [MoMo Webhook] Received signature: 8ce4de207c7f3a5a807b7390a753147a45590af9a96b7d43bbbf2040658c96ec
+[2025-08-22 02:57:24,299] ERROR webgames.webhook [MoMo Webhook] Signature verification FAILED!
+[2025-08-22 02:57:24,301] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 03:00:21,047] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:00:22,441] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:00:29,829] WARNING django.request Unauthorized: /orders/
+[2025-08-22 03:00:42,013] WARNING django.request Forbidden: /games/1/download/
+[2025-08-22 03:00:52,045] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:00:52,045] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_71_4bf53c96","requestId":"4bf53c96-61a1-4918-aded-8f62b188e2ff","amount":180000,"responseTime":1755806452379,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83MV80YmY1M2M5Ng&s=6ebffa5a3d11763314a3edaa478a7c137c329a3b677cd80b7dd5bbde26fb7402","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83MV80YmY1M2M5Ng&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83MV80YmY1M2M5Ng&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83MV80YmY1M2M5Ng&v=3.0"}
+[2025-08-22 03:01:04,912] INFO webgames.webhook [MoMo Webhook] --- Received webhook ---
+[2025-08-22 03:01:04,912] INFO webgames.webhook [MoMo Webhook] Method: POST
+[2025-08-22 03:01:04,912] INFO webgames.webhook [MoMo Webhook] Headers: {'Content-Length': '387', 'Content-Type': 'application/json', 'Host': '3bbcd74fb12b.ngrok-free.app', 'User-Agent': 'Apache-HttpClient/4.5.13 (Java/15.0.2)', 'Accept': 'application/json, application/x-www-form-urlencoded', 'Accept-Encoding': 'gzip,deflate', 'X-Forwarded-For': '118.68.171.198', 'X-Forwarded-Host': '3bbcd74fb12b.ngrok-free.app', 'X-Forwarded-Proto': 'https'}
+[2025-08-22 03:01:04,929] INFO webgames.webhook [MoMo Webhook] Calculated signature: b1baf31ced01972eec5f36e2882a04ff6c086aeeebf00c03d81b561fc8d45045
+[2025-08-22 03:01:04,929] INFO webgames.webhook [MoMo Webhook] Received signature: 7bdff4ea242426518ccd5b7f8c8521f114e49daf81bfe4792bbb8d59ccda417d
+[2025-08-22 03:01:04,929] ERROR webgames.webhook [MoMo Webhook] Signature verification FAILED!
+[2025-08-22 03:01:04,930] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 03:03:08,447] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:03:09,946] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:03:21,853] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:03:23,276] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:03:24,053] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:03:24,053] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_72_b99e77e7","requestId":"b99e77e7-d098-45cc-a972-e4bf2506cd05","amount":180000,"responseTime":1755806604388,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83Ml9iOTllNzdlNw&s=13f3072d5428bf3fb7f881b6b4fbb2317b8d47b970b13526ab165ddcf7634c1e","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83Ml9iOTllNzdlNw&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83Ml9iOTllNzdlNw&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83Ml9iOTllNzdlNw&v=3.0"}
+[2025-08-22 03:03:37,391] INFO webgames.webhook [MoMo Webhook] --- Received webhook ---
+[2025-08-22 03:03:37,391] INFO webgames.webhook [MoMo Webhook] Method: POST
+[2025-08-22 03:03:37,391] INFO webgames.webhook [MoMo Webhook] Headers: {'Content-Length': '387', 'Content-Type': 'application/json', 'Host': '3bbcd74fb12b.ngrok-free.app', 'User-Agent': 'Apache-HttpClient/4.5.13 (Java/15.0.2)', 'Accept': 'application/json, application/x-www-form-urlencoded', 'Accept-Encoding': 'gzip,deflate', 'X-Forwarded-For': '118.68.171.198', 'X-Forwarded-Host': '3bbcd74fb12b.ngrok-free.app', 'X-Forwarded-Proto': 'https'}
+[2025-08-22 03:03:37,406] INFO webgames.webhook [MoMo Webhook] Calculated signature: f4dc36d6bf59034dae63431980a7b0d372c75a0f131525f8f77f019f9df10b80
+[2025-08-22 03:03:37,407] INFO webgames.webhook [MoMo Webhook] Received signature: 7d10227d1f2c4162520b0bedae6eea2be5ba04fd239df45c4c28ce97b7db94a1
+[2025-08-22 03:03:37,407] ERROR webgames.webhook [MoMo Webhook] Signature verification FAILED!
+[2025-08-22 03:03:37,408] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 03:04:51,512] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:04:52,863] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:05:06,021] WARNING django.request Forbidden: /games/1/download/
+[2025-08-22 03:05:08,308] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:05:08,309] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_73_0a54b9ee","requestId":"0a54b9ee-1b25-4bdd-8715-10aa2f50d76d","amount":180000,"responseTime":1755806708644,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83M18wYTU0YjllZQ&s=3b51fe75ff008ac505718d1512b712b8191a8c77d315529752295cbf3993c877","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83M18wYTU0YjllZQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83M18wYTU0YjllZQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83M18wYTU0YjllZQ&v=3.0"}
+[2025-08-22 03:05:26,640] INFO webgames.webhook [MoMo Webhook] --- Received webhook ---
+[2025-08-22 03:05:26,640] INFO webgames.webhook [MoMo Webhook] Method: POST
+[2025-08-22 03:05:26,641] INFO webgames.webhook [MoMo Webhook] Headers: {'Content-Length': '387', 'Content-Type': 'application/json', 'Host': '3bbcd74fb12b.ngrok-free.app', 'User-Agent': 'Apache-HttpClient/4.5.13 (Java/15.0.2)', 'Accept': 'application/json, application/x-www-form-urlencoded', 'Accept-Encoding': 'gzip,deflate', 'X-Forwarded-For': '118.68.171.198', 'X-Forwarded-Host': '3bbcd74fb12b.ngrok-free.app', 'X-Forwarded-Proto': 'https'}
+[2025-08-22 03:05:26,655] INFO webgames.webhook [MoMo Webhook DEBUG] Fields received:
+[2025-08-22 03:05:26,655] INFO webgames.webhook partnerCode=MOMO
+[2025-08-22 03:05:26,655] INFO webgames.webhook accessKey=None
+[2025-08-22 03:05:26,655] INFO webgames.webhook requestId=0a54b9ee-1b25-4bdd-8715-10aa2f50d76d
+[2025-08-22 03:05:26,656] INFO webgames.webhook orderId=ORDER_73_0a54b9ee
+[2025-08-22 03:05:26,656] INFO webgames.webhook amount=180000
+[2025-08-22 03:05:26,662] INFO webgames.webhook orderType=momo_wallet
+[2025-08-22 03:05:26,662] INFO webgames.webhook transId=4565748129
+[2025-08-22 03:05:26,663] INFO webgames.webhook message=Thành công.
+[2025-08-22 03:05:26,663] INFO webgames.webhook resultCode=0
+[2025-08-22 03:05:26,663] INFO webgames.webhook responseTime=1755806726755
+[2025-08-22 03:05:26,663] INFO webgames.webhook extraData=
+[2025-08-22 03:05:26,674] INFO webgames.webhook [MoMo Webhook] Calculated signature: 73e358fdd1441823dc83ee7d3c847a484bc8ff5deb4c0e11c95ba6a51f9c149b
+[2025-08-22 03:05:26,674] INFO webgames.webhook [MoMo Webhook] Received signature: 40ed0fa7ec8f9b1352c8ee687e001aa141a7f97ad46aa85426bad0998f128778
+[2025-08-22 03:05:26,674] ERROR webgames.webhook [MoMo Webhook] Signature verification FAILED!
+[2025-08-22 03:05:26,675] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 03:07:40,158] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:07:41,659] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:07:42,472] WARNING django.request Unauthorized: /orders/
+[2025-08-22 03:07:49,319] WARNING django.request Forbidden: /games/1/download/
+[2025-08-22 03:07:51,872] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:07:51,872] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_74_0961178c","requestId":"0961178c-9f77-4c71-9199-89c0aa1611c4","amount":180000,"responseTime":1755806872208,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83NF8wOTYxMTc4Yw&s=2f8496815a3d4ca4963fc94ddc16553c3d7c06da13f8644e83dc096f8cee6ded","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83NF8wOTYxMTc4Yw&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83NF8wOTYxMTc4Yw&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83NF8wOTYxMTc4Yw&v=3.0"}
+[2025-08-22 03:08:05,793] INFO webgames.webhook [MoMo Webhook] --- Received webhook ---
+[2025-08-22 03:08:05,793] INFO webgames.webhook [MoMo Webhook] Method: POST
+[2025-08-22 03:08:05,794] INFO webgames.webhook [MoMo Webhook] Headers: {'Content-Length': '387', 'Content-Type': 'application/json', 'Host': '3bbcd74fb12b.ngrok-free.app', 'User-Agent': 'Apache-HttpClient/4.5.13 (Java/15.0.2)', 'Accept': 'application/json, application/x-www-form-urlencoded', 'Accept-Encoding': 'gzip,deflate', 'X-Forwarded-For': '118.68.171.198', 'X-Forwarded-Host': '3bbcd74fb12b.ngrok-free.app', 'X-Forwarded-Proto': 'https'}
+[2025-08-22 03:08:05,808] INFO webgames.webhook [MoMo Webhook DEBUG] Calculated signature: 2e86c02e143a0a2335831c8c36e6a6ec28d29702460439f2a87d28cdb162aabf
+[2025-08-22 03:08:05,808] INFO webgames.webhook [MoMo Webhook DEBUG] Received signature: e496803cb9cb20514b4949b6f651c1dbdb795d163e7132a789272ef4937a80e1
+[2025-08-22 03:08:05,808] ERROR webgames.webhook [MoMo Webhook] Signature verification FAILED!
+[2025-08-22 03:08:05,809] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 03:10:04,300] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:10:05,807] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:11:11,982] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:11:13,259] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:11:18,442] WARNING django.request Forbidden: /games/1/download/
+[2025-08-22 03:11:19,802] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:11:19,802] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_75_69875e6e","requestId":"69875e6e-30f7-4182-9cb9-eefbc668a084","amount":180000,"responseTime":1755807080137,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83NV82OTg3NWU2ZQ&s=9c1695f83c140351aaf2c6d110daabd611f27e43a2b8740a169970e6c0fcda7d","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83NV82OTg3NWU2ZQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83NV82OTg3NWU2ZQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83NV82OTg3NWU2ZQ&v=3.0"}
+[2025-08-22 03:11:33,131] INFO webgames.webhook [MoMo Webhook DEBUG] --- Received webhook ---
+[2025-08-22 03:11:33,131] INFO webgames.webhook Method: POST
+[2025-08-22 03:11:33,144] INFO webgames.webhook [MoMo Webhook DEBUG] Raw signature bytes: b'partnerCode=MOMO&accessKey=F8BBA842ECF85&requestId=69875e6e-30f7-4182-9cb9-eefbc668a084&amount=180000&orderId=ORDER_75_69875e6e&orderInfo=Thanh to\xc3\xa1n \xc4\x91\xc6\xa1n h\xc3\xa0ng #75&orderType=momo_wallet&transId=4565758066&message=Th\xc3\xa0nh c\xc3\xb4ng.&resultCode=0&responseTime=1755807093233&extraData='
+[2025-08-22 03:11:33,145] INFO webgames.webhook [MoMo Webhook DEBUG] Calculated signature: b27e6b35030b5dd7c803834c0b4c01be1e051aea5b97a17f4e83c7f024c9cae7
+[2025-08-22 03:11:33,145] INFO webgames.webhook [MoMo Webhook DEBUG] Received signature:   6752983519a6f080cfcadc6be61e1d15b9a892f159e350d5e88c7bdd43c4c7e2
+[2025-08-22 03:11:33,145] INFO webgames.webhook [MoMo Webhook DEBUG] Signature match: False
+[2025-08-22 03:11:33,145] ERROR webgames.webhook [MoMo Webhook DEBUG] Signature verification FAILED!
+[2025-08-22 03:11:33,146] WARNING django.request Bad Request: /momo/webhook/
+[2025-08-22 03:16:49,871] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:16:51,255] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:17:08,609] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 03:17:10,006] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:17:10,729] WARNING django.request Unauthorized: /orders/
+[2025-08-22 03:17:15,894] WARNING django.request Forbidden: /games/1/download/
+[2025-08-22 03:17:17,571] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:17:17,571] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_76_2cf97a28","requestId":"2cf97a28-a46f-4185-931a-3a0785e2148f","amount":180000,"responseTime":1755807437909,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83Nl8yY2Y5N2EyOA&s=71ef27327d7710f408e7b2b6031dc81a0c09611b6f9bb3dc4f723f75274a2fc5","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83Nl8yY2Y5N2EyOA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83Nl8yY2Y5N2EyOA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83Nl8yY2Y5N2EyOA&v=3.0"}
+[2025-08-22 03:18:01,160] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 03:18:01,160] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_77_958e1045","requestId":"958e1045-bf8a-47ed-9104-8332003d1023","amount":180000,"responseTime":1755807481492,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83N185NThlMTA0NQ&s=0f5f4b2254af9d95c8d7caf84c34880abdfa36ce6926dcf2f97515b6af13aa9e","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83N185NThlMTA0NQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83N185NThlMTA0NQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83N185NThlMTA0NQ&v=3.0"}
+[2025-08-22 03:27:32,767] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 03:27:34,319] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:27:52,087] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 03:27:53,507] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:29:35,346] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 03:32:39,750] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 03:32:41,352] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:33:36,542] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 03:33:37,872] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:33:43,183] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:34:48,919] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:34:54,466] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:34:54,470] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 03:34:56,573] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 03:34:56,632] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:35:30,970] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-22 03:35:32,411] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:35:36,427] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:35:36,429] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 03:35:52,845] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:36:41,907] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-22 03:36:43,320] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:36:45,149] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 03:36:45,149] WARNING django.request Forbidden: /categories/
+[2025-08-22 03:36:45,177] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:36:53,231] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:36:57,411] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 03:36:57,411] WARNING django.request Forbidden: /categories/
+[2025-08-22 03:36:57,437] ERROR django.request Internal Server Error: /games/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 409, in initial
+    self.format_kwarg = self.get_format_suffix(**kwargs)
+                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 259, in get_format_suffix
+    if self.settings.FORMAT_SUFFIX_KWARG:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'FORMAT_SUFFIX_KWARG'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    exception_handler = self.get_exception_handler()
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 304, in get_exception_handler
+    return self.settings.EXCEPTION_HANDLER
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
+[2025-08-22 03:38:07,797] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 03:38:09,145] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 03:38:10,912] WARNING django.request Forbidden: /
+[2025-08-22 03:38:16,254] WARNING django.request Forbidden: /games/
+[2025-08-22 03:38:16,255] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 03:38:16,256] WARNING django.request Forbidden: /categories/
+[2025-08-22 03:38:31,347] WARNING django.request Forbidden: /games/
+[2025-08-22 03:38:31,348] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 03:38:31,350] WARNING django.request Forbidden: /categories/
+[2025-08-22 15:55:44,974] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 15:56:01,654] WARNING django.request Forbidden: /games/
+[2025-08-22 15:56:01,654] WARNING django.request Forbidden: /categories/
+[2025-08-22 15:56:01,654] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 15:56:25,758] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 15:56:25,779] WARNING django.request Forbidden: /games/
+[2025-08-22 15:56:25,781] WARNING django.request Forbidden: /users/current_user/
+[2025-08-22 15:56:25,790] WARNING django.request Forbidden: /categories/
+[2025-08-22 15:58:24,287] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 15:58:25,653] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:00:53,220] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-22 16:00:54,640] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:07:16,853] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 16:07:18,343] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:07:34,283] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 16:10:43,450] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 16:10:45,349] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:10:49,478] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 16:10:50,716] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:11:09,268] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 16:11:10,589] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:11:14,625] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-22 16:11:15,945] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:12:29,205] WARNING django.request Forbidden: /games/6/download/
+[2025-08-22 16:12:30,468] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 16:12:30,468] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_78_9307452c","requestId":"9307452c-c337-4c61-8894-4e6b64d9d2b3","amount":180000,"responseTime":1755853950742,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83OF85MzA3NDUyYw&s=60ffe9c7997f6c428ca4a289039f622498d5f924a653cd47e499f6a9f66e8f8f","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83OF85MzA3NDUyYw&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83OF85MzA3NDUyYw&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83OF85MzA3NDUyYw&v=3.0"}
+[2025-08-22 16:13:32,636] WARNING django.request Unauthorized: /orders/
+[2025-08-22 16:13:38,983] WARNING django.request Forbidden: /games/6/download/
+[2025-08-22 16:13:39,974] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 16:13:39,975] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_79_2b45d2c2","requestId":"2b45d2c2-7b27-45b7-a2f1-96c770441a61","amount":180000,"responseTime":1755854020256,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl83OV8yYjQ1ZDJjMg&s=a4f33236862365ca2d2f948b6f4a5899671a4771fdf6a06bd105fc9543595a32","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl83OV8yYjQ1ZDJjMg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl83OV8yYjQ1ZDJjMg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl83OV8yYjQ1ZDJjMg&v=3.0"}
+[2025-08-22 16:18:45,372] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-22 16:18:46,992] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:20:12,426] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-22 16:20:13,748] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:20:17,884] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 16:20:21,770] WARNING django.request Unauthorized: /games/6/download/
+[2025-08-22 16:20:21,777] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-22 16:20:29,763] WARNING django.request Forbidden: /games/6/download/
+[2025-08-22 16:20:31,153] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 16:20:31,153] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_80_19270b06","requestId":"19270b06-8546-4010-8cbe-2f83bba8c77a","amount":180000,"responseTime":1755854431422,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84MF8xOTI3MGIwNg&s=d9a52935685a777a9f714fced83de5712ead20b75c038e7dc085f86433bff528","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84MF8xOTI3MGIwNg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84MF8xOTI3MGIwNg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84MF8xOTI3MGIwNg&v=3.0"}
+[2025-08-22 16:22:29,748] INFO django.utils.autoreload E:\WebGame\games\webgames\momo.py changed, reloading.
+[2025-08-22 16:22:31,332] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:25:31,445] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 16:25:32,656] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 16:27:32,610] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 16:27:33,866] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 17:19:22,644] WARNING django.request Unauthorized: /orders/
+[2025-08-22 17:19:28,923] WARNING django.request Forbidden: /games/6/download/
+[2025-08-22 17:19:30,496] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 17:19:30,496] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_81_b83e3a16","requestId":"b83e3a16-ffb2-4f01-906c-021911805643","amount":180000,"responseTime":1755857970795,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84MV9iODNlM2ExNg&s=3292443921402fbefbf72d5ac7433e556c6790ee464c937bcd8e2300418f55fe","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84MV9iODNlM2ExNg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84MV9iODNlM2ExNg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84MV9iODNlM2ExNg&v=3.0"}
+[2025-08-22 17:22:02,695] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 17:22:04,841] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 17:22:20,088] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 17:22:21,367] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 17:22:33,534] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 17:22:34,789] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 17:22:42,466] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-22 17:22:43,897] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-22 17:22:48,218] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-22 17:22:48,218] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_82_2c3efb29","requestId":"2c3efb29-036a-41cd-bfc3-c14757c0d9fb","amount":180000,"responseTime":1755858168517,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&s=45ae528fcebbe2a902204fbf8415f7f6a8d62c860a9d06278c50f7fb977ccb54","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&v=3.0"}
