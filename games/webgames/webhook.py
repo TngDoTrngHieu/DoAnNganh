@@ -9,7 +9,7 @@ from django.utils import timezone
 import logging
 import hmac
 import hashlib
-
+from .utils import send_payment_email
 from .models import Payment, Order
 
 logger = logging.getLogger(__name__)
@@ -75,6 +75,8 @@ def momo_webhook_view(request):
         if result_code == 0:  # Thành công
             payment.status = "COMPLETED"
             order.status = "COMPLETED"
+            send_payment_email(user_email=order.customer.user.email,        # email của người dùng
+                order_id=order.id)
             payment.save()
             order.save()
 

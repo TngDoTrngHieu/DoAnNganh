@@ -36,15 +36,6 @@ function Login() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'radial-gradient(1000px 600px at 50% -20%, #2a475e 0%, #1b2838 60%, #171a21 100%)', color: '#c7d5e0' }}>
-      <nav className="navbar navbar-expand-lg" style={{ background: '#171a21' }}>
-        <div className="container">
-          <span className="navbar-brand" style={{ color: '#66c0f4', fontWeight: 'bold' }}>Steam</span>
-          <div className="ms-auto">
-            <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/')}>Trang chủ</button>
-          </div>
-        </div>
-      </nav>
 
       <div className="container" style={{ maxWidth: 420, margin: '0 auto', paddingTop: 80 }}>
         <div className="card" style={{ background: '#1b2838', border: 'none', boxShadow: '0 6px 24px rgba(0,0,0,0.4)' }}>
@@ -72,7 +63,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </div>
+
   );
 }
 

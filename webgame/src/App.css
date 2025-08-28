@@ -28,6 +28,28 @@
   color: #61dafb;
 }
 
+/* Layout styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #171a21;
+  color: #c7d5e0;
+}
+
+/* Container styles */
+.main-container {
+  flex: 1;
+  padding: 0;
+  min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-container {
+    min-height: calc(100vh - 150px);
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

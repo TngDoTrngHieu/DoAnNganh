@@ -12,7 +12,6 @@ from django.db.models import Q
 from django.db import transaction
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import viewsets, generics, permissions, status, parsers
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import action
@@ -34,8 +33,13 @@ class UserViewSet(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
     parser_classes = [parsers.MultiPartParser, parsers.FormParser, parsers.JSONParser]
 
+    def get_serializer_class(self):
+        if self.action == 'login':
+            return LoginSerializer
+        return AccountRegisterSerializer
+
     def get_serializer(self, *args, **kwargs):
-        return self.serializer_class(*args, **kwargs)
+        return self.get_serializer_class()(*args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         try:
@@ -50,8 +54,10 @@ class UserViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'], permission_classes=[permissions.AllowAny], url_path='login')
     def login(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
+        serializer = LoginSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        username = serializer.validated_data['username']
+        password = serializer.validated_data['password']
         if not username or not password:
             return Response({'detail': 'Thiếu username hoặc password'}, status=status.HTTP_400_BAD_REQUEST)
         user = authenticate(username=username, password=password)
@@ -106,8 +112,8 @@ class PaymentViewSet(viewsets.ModelViewSet):
             momo_response = initiate_momo_payment(
                 amount=amount,
                 order_info=f"Thanh toán đơn hàng #{order.id}",
-                redirect_url="https://yourdomain.com/thank-you",
-                ipn_url="https://37a63c0e7628.ngrok-free.app/momo/webhook/",
+                redirect_url="http://localhost:3000/thank-you",
+                ipn_url="https://fdb846ef3066.ngrok-free.app/momo/webhook/",
                 momo_request_id=momo_request_id,
                 momo_order_id=momo_order_id
             )
@@ -293,7 +299,22 @@ class OrderViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIV
         except Exception as e:
             logger.exception("Create order failed")
             return Response({'detail': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    # lay danh sach game da mua
 
+    @action(detail=False, methods=['get'])
+    def purchased_games(self, request):
+        account = request.user.account
+        purchased_items = (
+            OrderItem.objects
+            .filter(order__customer=account, order__status="COMPLETED")
+            .select_related("game")
+        )
+        games = [item.game for item in purchased_items]
+
+        list_games = GameSerializer(games, many=True)
+
+
+        return Response( list_games.data,status=status.HTTP_200_OK)
 class ReviewViewSet(viewsets.ViewSet, generics.ListAPIView):
     serializer_class = ReviewSerializer
 
