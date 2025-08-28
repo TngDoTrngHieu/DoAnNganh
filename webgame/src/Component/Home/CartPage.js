@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getGames } from '../../configs/Api';
+import { removeFromCart } from '../../utils/cartUtils';
 
 function CartPage() {
   const navigate = useNavigate();
@@ -25,9 +26,10 @@ function CartPage() {
   }, [cart]);
 
   const removeItem = (id) => {
-    const next = cart.filter(x => String(x) !== String(id));
-    setCart(next);
-    localStorage.setItem('cart', JSON.stringify(next));
+    if (removeFromCart(id)) {
+      const next = cart.filter(x => String(x) !== String(id));
+      setCart(next);
+    }
   };
 
   const checkout = () => {

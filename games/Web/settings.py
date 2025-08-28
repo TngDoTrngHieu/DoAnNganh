@@ -220,4 +220,23 @@ LOGGING = {
     },
 }
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': "Nhập token dạng: Bearer &lt;your_access_token&gt; hoặc Token &lt;your_token&gt;",
+        }
 
+    },
+    'USE_SESSION_AUTH': False,
+}
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hieuthuhai11b3@gmail.com'   # Gmail của bạn
+EMAIL_HOST_PASSWORD = 'jmvi zofq gzib etcu' # App Password (16 ký tự)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

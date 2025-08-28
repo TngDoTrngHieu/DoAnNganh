@@ -57,6 +57,11 @@ class AccountRegisterSerializer(serializers.ModelSerializer):
 
         return account
 
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment

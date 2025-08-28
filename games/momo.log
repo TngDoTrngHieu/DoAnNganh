@@ -503,3 +503,282 @@ AttributeError: 'Settings' object has no attribute 'EXCEPTION_HANDLER'
 [2025-08-22 17:22:43,897] INFO django.utils.autoreload Watching for file changes with StatReloader
 [2025-08-22 17:22:48,218] INFO webgames.momo [MoMo] Response status: 200
 [2025-08-22 17:22:48,218] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_82_2c3efb29","requestId":"2c3efb29-036a-41cd-bfc3-c14757c0d9fb","amount":180000,"responseTime":1755858168517,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&s=45ae528fcebbe2a902204fbf8415f7f6a8d62c860a9d06278c50f7fb977ccb54","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84Ml8yYzNlZmIyOQ&v=3.0"}
+[2025-08-25 21:07:51,123] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 21:21:06,885] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-25 21:28:36,449] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-25 21:28:37,813] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 21:28:47,469] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-25 21:28:48,717] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 21:29:12,713] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-25 21:29:13,976] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:02:52,921] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-25 22:02:54,436] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:03:39,589] INFO django.utils.autoreload E:\WebGame\games\webgames\utils.py changed, reloading.
+[2025-08-25 22:03:40,806] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:06:19,715] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:06:21,152] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:07:32,394] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:07:33,634] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:08:56,347] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:08:57,616] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:11:15,753] INFO django.utils.autoreload E:\WebGame\games\webgames\utils.py changed, reloading.
+[2025-08-25 22:11:17,009] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:11:32,825] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:11:34,080] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:11:42,512] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-25 22:11:43,756] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:11:53,451] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:11:54,711] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:12:07,820] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:12:08,865] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:12:26,965] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-25 22:12:28,380] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-25 22:21:20,105] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-26 01:09:26,009] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-26 01:09:33,209] WARNING django.request Forbidden: /games/3/download/
+[2025-08-26 01:09:55,779] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-26 01:09:55,779] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_83_fc5c8a02","requestId":"fc5c8a02-cbbc-464d-a25f-484b566a7c20","amount":100000,"responseTime":1756145397521,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84M19mYzVjOGEwMg&s=7e58148fd3ad7209827e1fc44c3578d68ad661bd7f13bf72e04b3b2c5423eb33","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84M19mYzVjOGEwMg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84M19mYzVjOGEwMg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84M19mYzVjOGEwMg&v=3.0"}
+[2025-08-26 18:11:09,638] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-26 18:11:38,887] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-26 18:11:40,557] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-26 18:11:40,561] WARNING django.request Unauthorized: /games/3/download/
+[2025-08-26 18:11:49,558] WARNING django.request Forbidden: /games/3/download/
+[2025-08-26 18:11:51,347] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-26 18:11:51,348] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_84_9e08d05d","requestId":"9e08d05d-7f69-403a-9ed1-e360e8bb518c","amount":100000,"responseTime":1756206715226,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84NF85ZTA4ZDA1ZA&s=1b44d169753d63cbdd0be3bd1e3a3862f3ed031f3a5dd8f515fb5f857b034d73","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84NF85ZTA4ZDA1ZA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84NF85ZTA4ZDA1ZA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84NF85ZTA4ZDA1ZA&v=3.0"}
+[2025-08-28 03:18:28,589] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-28 03:18:29,495] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:18:31,047] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:18:48,524] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:18:52,632] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:19:02,799] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:19:02,804] WARNING django.request Unauthorized: /games/3/download/
+[2025-08-28 03:20:16,835] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:20:58,065] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:21:05,512] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:21:05,517] WARNING django.request Unauthorized: /games/2/download/
+[2025-08-28 03:21:41,602] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:23:14,575] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:23:15,657] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:23:17,579] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:25:03,311] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:25:05,232] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:25:06,251] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:25:07,793] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:27:08,316] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:32:37,974] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 03:33:55,581] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-28 22:21:42,765] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-28 22:21:45,949] WARNING django.request Not Found: /favicon.ico
+[2025-08-29 01:01:05,546] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:01:07,492] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:01:14,556] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:01:15,828] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:01:33,586] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:01:34,944] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:04:09,127] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 01:04:13,024] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 01:04:13,028] WARNING django.request Unauthorized: /games/6/download/
+[2025-08-29 01:04:21,374] WARNING django.request Forbidden: /games/2/download/
+[2025-08-29 01:04:27,470] WARNING django.request Forbidden: /games/5/download/
+[2025-08-29 01:04:29,520] WARNING django.request Forbidden: /games/4/download/
+[2025-08-29 01:04:31,032] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 01:04:31,032] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_85_3512117d","requestId":"3512117d-cb7d-45f7-8b90-e00449eb26ab","amount":10000,"responseTime":1756404271062,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84NV8zNTEyMTE3ZA&s=eb19e992313aba78e3e808243bc2a89b17d39c7e7c47cd5735049fc3bb8218ac","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84NV8zNTEyMTE3ZA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84NV8zNTEyMTE3ZA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84NV8zNTEyMTE3ZA&v=3.0"}
+[2025-08-29 01:05:07,623] WARNING django.request Forbidden: /games/4/download/
+[2025-08-29 01:10:47,322] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 01:14:36,412] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 01:20:17,691] WARNING django.request Unauthorized: /orders/
+[2025-08-29 01:30:35,954] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:30:37,669] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:34:09,351] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:34:10,681] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:35:11,585] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:35:13,140] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:35:22,929] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:35:24,263] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:35:39,655] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 01:35:41,044] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:37:22,875] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 272, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 01:37:34,276] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:37:40,830] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:38:32,280] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:38:56,982] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:39:05,150] WARNING django.request Not Found: /o/token/
+[2025-08-29 01:39:20,990] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:41:21,066] WARNING django.request Not Found: /o/token/
+[2025-08-29 01:41:27,341] WARNING django.request Not Found: /o/token/
+[2025-08-29 01:44:08,496] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:45:10,977] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 01:50:24,872] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-08-29 01:50:26,503] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 01:50:38,933] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 272, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 01:54:35,841] WARNING django.request Unauthorized: /games/2/download/
+[2025-08-29 01:58:14,689] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 272, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:02:37,939] INFO django.utils.autoreload E:\WebGame\games\Web\urls.py changed, reloading.
+[2025-08-29 02:02:39,547] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:02:42,888] INFO django.utils.autoreload E:\WebGame\games\Web\urls.py changed, reloading.
+[2025-08-29 02:02:44,471] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:02:45,552] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 272, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:03:01,489] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 02:08:01,163] INFO django.utils.autoreload E:\WebGame\games\webgames\serializers.py changed, reloading.
+[2025-08-29 02:08:02,598] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:08:20,173] INFO django.utils.autoreload E:\WebGame\games\webgames\serializers.py changed, reloading.
+[2025-08-29 02:08:21,594] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:08:29,248] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:08:30,901] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:08:37,817] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 274, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:09:00,584] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 274, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:09:01,862] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 274, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:11:06,289] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:11:07,680] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:11:17,518] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:11:18,959] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:11:21,586] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 279, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:11:48,413] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:13:47,219] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 279, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:15:19,302] WARNING drf_yasg.inspectors.base view's OrderViewSet raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\drf_yasg\inspectors\base.py", line 42, in call_view_method
+    return view_method()
+  File "E:\WebGame\games\webgames\views.py", line 279, in get_queryset
+    return Order.objects.filter(customer=self.request.user.account).order_by('-created_at')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'account'
+[2025-08-29 02:15:22,478] WARNING django.request Unauthorized: /orders/purchased_games/
+[2025-08-29 02:16:47,554] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 02:17:31,715] WARNING django.request Forbidden: /games/2/download/
+[2025-08-29 02:17:35,213] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:17:35,213] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_86_1b32a4a1","requestId":"1b32a4a1-ea80-4485-8928-701597bc3463","amount":4000000,"responseTime":1756408655267,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84Nl8xYjMyYTRhMQ&s=ba50f192e50b67bd4c9b51ebe4a1904cfb91e2a128b9ce602ff54d26264443ac","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84Nl8xYjMyYTRhMQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84Nl8xYjMyYTRhMQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84Nl8xYjMyYTRhMQ&v=3.0"}
+[2025-08-29 02:18:59,231] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:19:00,937] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:19:12,272] WARNING django.request Forbidden: /games/2/download/
+[2025-08-29 02:19:14,056] WARNING django.request Forbidden: /games/1/download/
+[2025-08-29 02:19:15,817] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:19:15,817] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_87_e92814b4","requestId":"e92814b4-fbd4-4632-b151-a4c3542b2b1f","amount":180000,"responseTime":1756408755870,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84N19lOTI4MTRiNA&s=e83faba2a3b60d71b4ade3587c77eb121c29271d4950c5b99818eb06a1bf93bf","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84N19lOTI4MTRiNA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84N19lOTI4MTRiNA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84N19lOTI4MTRiNA&v=3.0"}
+[2025-08-29 02:22:17,310] WARNING django.request Unauthorized: /games/2/download/
+[2025-08-29 02:22:20,628] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 02:22:26,661] WARNING django.request Unauthorized: /games/2/download/
+[2025-08-29 02:22:38,650] WARNING django.request Forbidden: /games/2/download/
+[2025-08-29 02:22:44,643] WARNING django.request Forbidden: /games/1/download/
+[2025-08-29 02:22:47,563] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:22:47,564] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_88_5bb7ef30","requestId":"5bb7ef30-75ac-42c9-a952-195fd6d5c2f0","amount":180000,"responseTime":1756408967616,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84OF81YmI3ZWYzMA&s=3c780a4f729cb04072d4277c76f98dc96e559ee278fb59d203a6fc885d19fb29","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84OF81YmI3ZWYzMA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84OF81YmI3ZWYzMA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84OF81YmI3ZWYzMA&v=3.0"}
+[2025-08-29 02:25:40,746] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-29 02:25:42,403] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:26:04,579] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:26:06,168] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:26:21,490] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:26:22,737] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:26:45,583] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:27:11,948] WARNING django.request Forbidden: /games/1/download/
+[2025-08-29 02:27:13,063] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:27:13,063] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_89_f6669492","requestId":"f6669492-d571-4919-b0ac-51a56c6eb1c0","amount":180000,"responseTime":1756409233118,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl84OV9mNjY2OTQ5Mg&s=a3b112bfebb5958ce1d9a36381d89ba6e728797afd3c484a08a07c2bc4a45458","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl84OV9mNjY2OTQ5Mg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl84OV9mNjY2OTQ5Mg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl84OV9mNjY2OTQ5Mg&v=3.0"}
+[2025-08-29 02:28:03,686] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:28:05,463] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:28:19,986] WARNING django.request Unauthorized: /orders/
+[2025-08-29 02:31:14,119] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:31:15,638] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:33:08,713] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:33:10,228] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:33:54,857] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:33:56,153] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:36:30,979] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:36:32,450] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:38:28,052] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-29 02:38:29,504] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:38:59,909] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook.py changed, reloading.
+[2025-08-29 02:39:01,302] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:39:07,771] WARNING django.request Unauthorized: /users/current_user/
+[2025-08-29 02:39:09,389] WARNING django.request Unauthorized: /games/3/download/
+[2025-08-29 02:39:17,104] WARNING django.request Forbidden: /games/3/download/
+[2025-08-29 02:39:26,172] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:39:26,172] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_90_0da44144","requestId":"0da44144-6e32-4c38-b790-6f0ddf118b77","amount":100000,"responseTime":1756409966231,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl85MF8wZGE0NDE0NA&s=04bea46ca97ef160fe6eeab40c7867562d3c032cbf442b402266fce8047084f0","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl85MF8wZGE0NDE0NA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl85MF8wZGE0NDE0NA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl85MF8wZGE0NDE0NA&v=3.0"}
+[2025-08-29 02:40:14,186] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:40:15,553] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:40:17,814] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:40:19,090] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:40:42,992] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:40:44,412] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:40:47,747] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:40:49,108] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:40:51,769] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:40:51,769] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_91_2b3bda39","requestId":"2b3bda39-04ea-4ee8-97cd-711b7072bd92","amount":100000,"responseTime":1756410051828,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl85MV8yYjNiZGEzOQ&s=754827a39a5f6ced6437d5559b5b54fbf6add3272392b9342c15190039b8b515","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl85MV8yYjNiZGEzOQ&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl85MV8yYjNiZGEzOQ&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl85MV8yYjNiZGEzOQ&v=3.0"}
+[2025-08-29 02:40:53,754] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:40:53,754] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_92_18acc5c2","requestId":"18acc5c2-11a1-4bee-bbb2-cded74f6bccc","amount":180000,"responseTime":1756410053811,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl85Ml8xOGFjYzVjMg&s=aa33c106bd9ef5e21890afe93d3401eb806110c7b063bbbb3db5920adfc56c1b","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl85Ml8xOGFjYzVjMg&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl85Ml8xOGFjYzVjMg&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl85Ml8xOGFjYzVjMg&v=3.0"}
+[2025-08-29 02:41:20,905] WARNING django.request Forbidden: /games/3/download/
+[2025-08-29 02:41:22,389] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:41:22,389] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_93_db061974","requestId":"db061974-5db3-4084-bbd9-322ad62850d0","amount":100000,"responseTime":1756410082448,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl85M19kYjA2MTk3NA&s=a0f3272006fee51766c97525657c80d2bd36cd95997c83fe6fc35a60dcffd8b9","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl85M19kYjA2MTk3NA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl85M19kYjA2MTk3NA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl85M19kYjA2MTk3NA&v=3.0"}
+[2025-08-29 02:41:50,443] WARNING django.request Not Found: /thank-you
+[2025-08-29 02:41:50,595] WARNING django.request Not Found: /favicon.ico
+[2025-08-29 02:42:02,025] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:42:03,478] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:42:09,148] WARNING django.request Not Found: /thank-you
+[2025-08-29 02:42:09,781] WARNING django.request Not Found: /thank-you
+[2025-08-29 02:42:10,984] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:42:10,984] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_94_ed8fce8d","requestId":"ed8fce8d-9b09-4053-a6c2-3a97767d68a1","amount":100000,"responseTime":1756410131043,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl85NF9lZDhmY2U4ZA&s=a930cbcb37649ad9732cfba12a4f188d099875a80a689acd39723032815ca813","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl85NF9lZDhmY2U4ZA&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl85NF9lZDhmY2U4ZA&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl85NF9lZDhmY2U4ZA&v=3.0"}
+[2025-08-29 02:43:10,321] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-08-29 02:43:11,757] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-08-29 02:43:14,979] WARNING django.request Forbidden: /games/3/download/
+[2025-08-29 02:43:15,868] INFO webgames.momo [MoMo] Response status: 200
+[2025-08-29 02:43:15,868] INFO webgames.momo [MoMo] Response body: {"partnerCode":"MOMO","orderId":"ORDER_95_32beeddc","requestId":"32beeddc-a54e-47a7-85b0-fabd663bfa2e","amount":100000,"responseTime":1756410195929,"message":"Thành công.","resultCode":0,"payUrl":"https://test-payment.momo.vn/v2/gateway/pay?t=TU9NT3xPUkRFUl85NV8zMmJlZWRkYw&s=e396742f2f51faf0995b75b998d33c8f165f259519feb08d20a71761a6b78ea4","deeplink":"momo://app?action=payWithApp&isScanQR=false&serviceType=app&sid=TU9NT3xPUkRFUl85NV8zMmJlZWRkYw&v=3.0","qrCodeUrl":"momo://app?action=payWithApp&isScanQR=true&serviceType=qr&sid=TU9NT3xPUkRFUl85NV8zMmJlZWRkYw&v=3.0","deeplinkMiniApp":"momo://app?action=payWithApp&isScanQR=false&serviceType=miniapp&sid=TU9NT3xPUkRFUl85NV8zMmJlZWRkYw&v=3.0"}

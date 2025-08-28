@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, NavLink, useSearchParams } from 'react-router-dom';
-import api, { endpoints, getCurrentUser, getGames } from '../../configs/Api';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import api, { endpoints, getGames } from '../../configs/Api';
+import { addToCart } from '../../utils/cartUtils';
 
 function HomePage() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [showCat, setShowCat] = useState(false);
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [q, setQ] = useState(searchParams.get('q') || '');
-  const [cartCount, setCartCount] = useState(0);
   const [selectedTag, setSelectedTag] = useState(searchParams.get('tag_id') || '');
   const [priceMin, setPriceMin] = useState(searchParams.get('price_min') || '');
   const [priceMax, setPriceMax] = useState(searchParams.get('price_max') || '');
+  const navigate = useNavigate();
 
   useEffect(() => {
     // read from URL
@@ -44,38 +41,7 @@ function HomePage() {
         console.error('Lỗi khi lấy danh sách game:', error);
         setLoading(false);
       });
-
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      getCurrentUser()
-        .then(res => setUser(res.data))
-        .catch(() => setUser(null));
-    }
-
-    // fetch categories
-    api.get(endpoints.categories)
-      .then(res => setCategories(Array.isArray(res.data) ? res.data : (res.data?.results ?? [])))
-      .catch(() => setCategories([]));
-
-    // cart count init + sync
-    const loadCart = () => {
-      try {
-        const raw = localStorage.getItem('cart');
-        const ids = raw ? JSON.parse(raw) : [];
-        setCartCount(Array.isArray(ids) ? ids.length : 0);
-      } catch { setCartCount(0); }
-    };
-    loadCart();
-    const onStorage = (e) => { if (e.key === 'cart') loadCart(); };
-    window.addEventListener('storage', onStorage);
-    return () => window.removeEventListener('storage', onStorage);
   }, [searchParams]);
-
-  const logout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    setUser(null);
-  };
 
   const formatVND = (value) => {
     const num = Number(value);
@@ -83,95 +49,18 @@ function HomePage() {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(num);
   };
 
-  const addToCart = (id) => {
-    try {
-      const raw = localStorage.getItem('cart');
-      const ids = raw ? JSON.parse(raw) : [];
-      const set = new Set(Array.isArray(ids) ? ids : []);
-      set.add(Number(id));
-      localStorage.setItem('cart', JSON.stringify(Array.from(set)));
+  const handleAddToCart = (id) => {
+    if (addToCart(id)) {
       alert('Đã thêm vào giỏ');
-    } catch (e) {
-      localStorage.setItem('cart', JSON.stringify([Number(id)]));
-      alert('Đã thêm vào giỏ');
+    } else {
+      alert('Lỗi khi thêm vào giỏ');
     }
   };
 
   if (loading) return <div className="text-center py-5 text-light">Đang tải game...</div>;
 
   return (
-    <div style={{ minHeight: '100vh', background: '#171a21', color: '#c7d5e0' }}>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark" style={{ background: '#171a21' }}>
-        <div className="container">
-          <span className="navbar-brand" style={{ color: '#66c0f4', fontWeight: 'bold' }}>Steam</span>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarMain">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Trang chủ</NavLink>
-              </li>
-              <li
-                className="nav-item dropdown"
-                onMouseEnter={() => setShowCat(true)}
-                onMouseLeave={() => setShowCat(false)}
-              >
-                <NavLink to="/categories" className={({ isActive }) => `nav-link dropdown-toggle ${isActive ? 'active' : ''}`} role="button">
-                  Danh mục
-                </NavLink>
-                <ul className={`dropdown-menu ${showCat ? 'show' : ''}`} style={{ background: '#1b2838' }}>
-                  {categories.length === 0 ? (
-                    <li><span className="dropdown-item text-muted">Chưa có danh mục</span></li>
-                  ) : (
-                    categories.map(c => (
-                      <li key={c.id}>
-                        <button
-                          className="dropdown-item"
-                          style={{ color: '#c7d5e0' }}
-                          onClick={() => navigate(`/categories/${c.id}`)}
-                        >
-                          {c.name}
-                        </button>
-                      </li>
-                    ))
-                  )}
-                </ul>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/tags" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Tag</NavLink>
-              </li>
-            </ul>
-            <form className="d-flex ms-auto my-2 my-lg-0" role="search" onSubmit={(e)=>{e.preventDefault(); const next={}; if(q) next.q=q; if(selectedTag) next.tag_id=selectedTag; if(priceMin) next.price_min=priceMin; if(priceMax) next.price_max=priceMax; setSearchParams(next);}}>
-              <input className="form-control me-2" type="search" placeholder="Tìm kiếm game..." aria-label="Search" value={q} onChange={(e)=>setQ(e.target.value)} />
-            </form>
-            <div className="ms-3 d-flex align-items-center">
-              <button onClick={() => navigate('/cart')} className="btn btn-outline-info btn-sm me-2">Giỏ hàng ({cartCount})</button>
-              {user ? (
-                <>
-                  <span className="me-2">Xin chào, <strong>{user?.username || 'User'}</strong></span>
-                  <button onClick={logout} className="btn btn-outline-light btn-sm">Đăng xuất</button>
-                </>
-              ) : (
-                <>
-                  <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm me-2" style={{ background: '#66c0f4', borderColor: '#66c0f4', color: '#171a21' }}>Đăng nhập</button>
-                  <button onClick={() => navigate('/register')} className="btn btn-outline-light btn-sm">Đăng ký</button>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Banner */}
-      <div className="py-5 text-center" style={{ background: 'linear-gradient(90deg, #1b2838 60%, #66c0f4 100%)' }}>
-        <div className="container">
-          <h1 className="display-5">Chào mừng đến với Steam!</h1>
-          <p className="lead mb-0">Khám phá và mua các tựa game hot nhất hiện nay</p>
-        </div>
-      </div>
-
+    <div style={{ background: '#171a21', color: '#c7d5e0', minHeight: '100%' }}>
       {/* Game List */}
       <div className="container my-4">
         {games.length === 0 ? (
@@ -195,7 +84,7 @@ function HomePage() {
                     <p className="card-text fw-bold mb-3">{formatVND(game.price)}</p>
                     <div className="d-flex gap-2">
                       <button onClick={() => navigate(`/games/${game.id}`)} className="btn btn-primary" style={{ background: '#66c0f4', borderColor: '#66c0f4', color: '#171a21' }}>Xem</button>
-                      <button onClick={() => addToCart(game.id)} className="btn btn-outline-light">Thêm vào giỏ</button>
+                      <button onClick={() => handleAddToCart(game.id)} className="btn btn-outline-light">Thêm vào giỏ</button>
                     </div>
                   </div>
                 </div>
@@ -204,11 +93,6 @@ function HomePage() {
           </div>
         )}
       </div>
-
-      {/* Footer */}
-      <footer className="text-center py-3" style={{ background: '#171a21' }}>
-        © {new Date().getFullYear()} Steam Clone. Được tạo bởi AI.
-      </footer>
     </div>
   );
 }
