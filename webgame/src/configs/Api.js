@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// Lấy URL từ file .env (ví dụ: REACT_APP_BASE_URL=http://localhost:8000/)
-export const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8000/";
+
+export const BASE_URL ="http://localhost:8000/";
 
 // Tạo axios instance cho API public (không cần token)
 const api = axios.create({
@@ -22,10 +22,13 @@ export const endpoints = {
   'tags': "tags/",
   'orders': "orders/",
   'paymentsMomo': "payments/momo/",
+  'paymentsVnpay': 'payments/vnpay/',
   'gameDownload': (id) => `games/${id}/download/`,
   'reviews': 'reviews/',
   'createReview': 'reviews/create_review/',
-
+  'carts': 'carts/',
+  'statsRevenue': "stats/revenue/",
+  
 };
 
 // API cho request cần token
@@ -104,6 +107,11 @@ export const createMomoPayment = async (orderId) => {
   return authApi().post(endpoints.paymentsMomo, { order_id: orderId, redirect_url: redirectUrl });
 };
 
+export const createVnpayPayment = async (orderId) => {
+  const redirectUrl = `${window.location.origin}/thank-you`;
+  return authApi().post(endpoints.paymentsVnpay, { order_id: orderId, redirect_url: redirectUrl });
+};
+
 // Kiểm tra và lấy link tải nếu đã mua
 export const getDownloadLink = async (gameId) => {
   return authApi().get(endpoints.gameDownload(gameId));
@@ -118,5 +126,41 @@ export const getReviews = async (gameId) => {
 export const createReviewApi = async ({ game, rating, comment }) => {
   return authApi().post(endpoints.createReview, { game, rating, comment });
 };
+// Lấy giỏ hàng
+export const getCartItems = async () => {
+  return authApi().get(`${endpoints.carts}items/`);
+};
 
+// Thêm game vào giỏ hàng
+export const addToCart = async (gameId) => {
+  return authApi().post(`${endpoints.carts}add_item/`, { game_id: gameId });
+};
+
+// Xóa 1 game khỏi giỏ hàng
+export const removeFromCart = async (gameId) => {
+  return authApi().delete(`${endpoints.carts}remove_item/`, { data: { game_id: gameId } });
+};
+
+// Xóa toàn bộ giỏ hàng
+export const clearCart = async () => {
+  return authApi().delete(`${endpoints.carts}clear/`);
+};
+
+export const getCategories = async () => {
+  return api.get(endpoints.categories);
+};
+export const getRevenueStats = async (type = "month") => {
+  return authApi().get(`${endpoints.statsRevenue}?type=${type}`);
+};
+
+// Lấy tất cả thống kê (revenue, category, tag, số lượng)
+export const getAllStats = async () => {
+  const token = localStorage.getItem("access_token");
+  return axios.get(`${BASE_URL}${endpoints.statsRevenue}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  });
+};
 export default api;

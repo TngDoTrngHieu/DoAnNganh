@@ -5,7 +5,7 @@ import { addToCart } from '../../utils/cartUtils';
 
 function TagsPage() {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [tags, setTags] = useState([]);
   const [selected, setSelected] = useState('');
   const [games, setGames] = useState([]);

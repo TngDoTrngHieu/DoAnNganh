@@ -1,4 +1,4 @@
-from webgames.models import Tag,Game,Developer,Review,OrderItem,Order,Category,Account,User,Payment
+from webgames.models import Tag,Game,Developer,Review,OrderItem,Order,Category,Account,User,Payment,CartItem,Cart
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from django.db import transaction
@@ -126,3 +126,19 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['id', 'customer', 'game', 'rating', 'comment', 'image', 'created_at']
+
+
+class CartItemSerializer(serializers.ModelSerializer):
+    game_title = serializers.CharField(source='game.title', read_only=True)
+    price = serializers.DecimalField(source='game.price', max_digits=10, decimal_places=2, read_only=True)
+
+    class Meta:
+        model = CartItem
+        fields = ['id', 'game', 'game_title', 'price','created_at']
+
+class CartSerializer(serializers.ModelSerializer):
+    items = CartItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Cart
+        fields = ['id', 'items', 'created_at']
