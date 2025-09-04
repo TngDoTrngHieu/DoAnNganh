@@ -11,29 +11,35 @@ import GameDetail from './Component/Home/GameDetail';
 import CartPage from './Component/Home/CartPage';
 import CheckoutPage from './Component/Home/CheckoutPage';
 import ThankYouPage from './Component/Home/ThankYouPage';
+import { AuthProvider } from './Component/User/AuthContext';
+import ChartPage from './Component/Home/ChartPage';
 
 function App() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#171a21' }}>
-      <Header />
+      <AuthProvider>
+        <Header />
 
-      <div className="main-container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/categories" element={<CategoriesPage />} />
-          <Route path="/categories/:id" element={<CategoriesPage />} />
-          <Route path="/tags" element={<TagsPage />} />
-          <Route path="/games/:id" element={<GameDetail />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/thank-you" element={<ThankYouPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
+        <div className="main-container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/categories/:id" element={<CategoriesPage />} />
+            <Route path="/tags" element={<TagsPage />} />
+            <Route path="/games/:id" element={<GameDetail />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="/stats" element={<ChartPage />} />
 
-      <Footer />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </AuthProvider>
     </div>
   );
 }

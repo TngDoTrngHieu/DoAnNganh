@@ -240,3 +240,17 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hieuthuhai11b3@gmail.com'   # Gmail của bạn
 EMAIL_HOST_PASSWORD = 'jmvi zofq gzib etcu' # App Password (16 ký tự)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+VNPAY_RETURN_URL = 'http://localhost:3000/thanh-you'
+VNPAY_PAYMENT_URL = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'
+VNPAY_API_URL = 'https://sandbox.vnpayment.vn/merchant_webapi/api/transaction'
+VNPAY_TMN_CODE = 'M0V8RBA7'
+VNPAY_HASH_SECRET_KEY = 'GVMC5I7V4437514TBU79BDNX32E1C2MQ'
+
+
+NGANHANG='NCB'
+SOTHE='9704198526191432198'
+TENCHUTHE='NGUYEN VAN A'
+NGAYPHATHANH='07/15'
+OTP='123456'

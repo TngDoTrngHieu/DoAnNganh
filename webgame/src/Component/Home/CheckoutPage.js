@@ -48,7 +48,7 @@ function CheckoutPage() {
       }
     };
     run();
-  }, [location.search]);
+  }, [location.search , navigate]);
 
   if (loading) return <div className="container py-5">Đang xử lý thanh toán...</div>;
   if (error) return <div className="container py-5 text-danger">{error}</div>;

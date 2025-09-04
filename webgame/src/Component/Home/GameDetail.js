@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api, { endpoints, getDownloadLink, getReviews, createReviewApi } from '../../configs/Api';
-import { addToCart } from '../../utils/cartUtils';
+import api, { endpoints, getReviews, createReviewApi, createOrder, createMomoPayment, createVnpayPayment } from '../../configs/Api';
+import axios from 'axios';
 
 function GameDetail() {
   const { id } = useParams();
@@ -9,20 +9,11 @@ function GameDetail() {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [downloadUrl, setDownloadUrl] = useState('');
-  const [checking, setChecking] = useState(false);
+  const [downloadUrl, ] = useState('');
+
   const [reviews, setReviews] = useState([]);
   const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '' });
   const [submittingReview, setSubmittingReview] = useState(false);
-  useEffect(() => { // auto-check on mount if logged in
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      checkDownload();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
-
 
   useEffect(() => {
     if (!id) return;
@@ -30,17 +21,33 @@ function GameDetail() {
       .then(res => setGame(res.data))
       .catch(() => setError('Không thể tải thông tin game.'))
       .finally(() => setLoading(false));
-    // load reviews
-    getReviews(id).then(res => setReviews(Array.isArray(res.data) ? res.data : (res.data?.results ?? []))).catch(() => setReviews([]));
+
+    getReviews(id)
+      .then(res => setReviews(Array.isArray(res.data) ? res.data : (res.data?.results ?? [])))
+      .catch(() => setReviews([]));
   }, [id]);
 
+  const handleDownload = () => {
+    if (!downloadUrl) return;
+    const win = window.open(downloadUrl, '_blank', 'noopener,noreferrer');
+    if (!win) window.location.href = downloadUrl;
+  };
 
 
 
+  const handleAddToCart = async (gid) => {
+    try {
+      await axios.post('/carts/add_item/', { game_id: gid }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` },
+      });
+      alert('Đã thêm vào giỏ');
+    } catch (e) {
+      alert(e?.response?.data?.detail || 'Lỗi khi thêm vào giỏ');
+    }
+  };
 
   const submitReview = async () => {
-    if (!id) return;
-    if (!reviewForm.rating) return;
+    if (!id || !reviewForm.rating) return;
     setSubmittingReview(true);
     try {
       await createReviewApi({ game: Number(id), rating: Number(reviewForm.rating), comment: reviewForm.comment });
@@ -49,47 +56,33 @@ function GameDetail() {
       setReviewForm({ rating: 5, comment: '' });
       alert('Đã gửi đánh giá');
     } catch (e) {
-      const msg = e?.response?.data?.detail || 'Không thể gửi đánh giá (cần mua game trước)';
-      alert(msg);
+      alert(e?.response?.data?.detail || 'Không thể gửi đánh giá (cần mua game trước)');
     } finally {
       setSubmittingReview(false);
     }
   };
 
-  const checkDownload = async () => {
-    if (!id) return;
-    setChecking(true);
+  const handleMomoPayment = async () => {
     try {
-      const res = await getDownloadLink(id);
-      const url = res?.data?.file;
-      if (url) setDownloadUrl(url);
-    } catch (e) {
-      const status = e?.response?.status;
-      if (status === 401) {
-        alert('Vui lòng đăng nhập để tải xuống');
-        navigate('/login');
-      }
-    }
-    setChecking(false);
-  };
-
-  const handleDownload = () => {
-    if (!downloadUrl) return;
-    const win = window.open(downloadUrl, '_blank', 'noopener,noreferrer');
-    if (!win) {
-      window.location.href = downloadUrl;
+      const orderRes = await createOrder([id]);
+      const orderId = orderRes.data.id;
+      const payRes = await createMomoPayment(orderId);
+      window.location.href = payRes.data.payUrl;
+    } catch {
+      alert('Không thể thanh toán MoMo');
     }
   };
 
-  const handleAddToCart = (gid) => {
-    if (addToCart(gid)) {
-      alert('Đã thêm vào giỏ');
-    } else {
-      alert('Lỗi khi thêm vào giỏ');
+  const handleVnpayPayment = async () => {
+    try {
+      const orderRes = await createOrder([id]);
+      const orderId = orderRes.data.id;
+      const payRes = await createVnpayPayment(orderId);
+      window.location.href = payRes.data.payment_url;
+    } catch {
+      alert('Không thể thanh toán VNPAY');
     }
   };
-
-  // download handled via anchor with `download` attribute once `downloadUrl` is available
 
   const formatVND = (value) => {
     const num = Number(value);
@@ -115,21 +108,23 @@ function GameDetail() {
           <div className="col-12 col-lg-7">
             <h2 style={{ color: '#66c0f4' }}>{game.title}</h2>
             <div className="mb-2 small text-muted">
-              {Array.isArray(game.categories) && game.categories.map(c => c.name).join(', ')}
+              {Array.isArray(game.categories) ? game.categories.map(c => c.name).join(', ') : ''}
             </div>
             <p className="mt-3">{game.description}</p>
 
             <div className="d-flex align-items-center gap-3 mt-4">
               <span className="fs-4 fw-bold">{formatVND(game.price)}</span>
+
               {downloadUrl ? (
                 <button className="btn btn-outline-light" onClick={handleDownload}>Tải xuống</button>
               ) : (
                 <>
-                  <button className="btn btn-primary" onClick={() => navigate('/checkout?ids=' + encodeURIComponent(JSON.stringify([id])))} style={{ background: '#66c0f4', borderColor: '#66c0f4', color: '#171a21' }}>Mua ngay</button>
+                  <button className="btn btn-primary" onClick={handleMomoPayment}>Mua ngay MoMo</button>
+                  <button className="btn btn-warning" onClick={handleVnpayPayment}>Mua ngay VNPAY</button>
                   <button className="btn btn-outline-light" onClick={() => handleAddToCart(id)}>Thêm vào giỏ</button>
                 </>
               )}
-              <button className="btn btn-secondary" disabled={checking} onClick={checkDownload}>Kiểm tra mua</button>
+
             </div>
 
             <div className="mt-4">
@@ -139,7 +134,6 @@ function GameDetail() {
               <div className="mt-2"><strong>Đã mua:</strong> {game.purchase_count}</div>
               <div className="mt-2 text-muted"><small>Ngày tạo: {game.created_at ? new Date(game.created_at).toLocaleString() : '—'}</small></div>
               <div className="mt-1 text-muted"><small>Cập nhật: {game.update_at ? new Date(game.update_at).toLocaleString() : '—'}</small></div>
-              {/* Hidden direct file link removed to avoid bypassing purchase & CORS issues */}
             </div>
           </div>
         </div>
@@ -169,7 +163,7 @@ function GameDetail() {
               <div className="col-auto">Đánh giá của bạn:</div>
               <div className="col-auto">
                 <select className="form-select" value={reviewForm.rating} onChange={e => setReviewForm({ ...reviewForm, rating: e.target.value })}>
-                  {[5,4,3,2,1].map(v => <option key={v} value={v}>{v} sao</option>)}
+                  {[5, 4, 3, 2, 1].map(v => <option key={v} value={v}>{v} sao</option>)}
                 </select>
               </div>
               <div className="col">

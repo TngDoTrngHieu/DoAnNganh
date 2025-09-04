@@ -78,9 +78,7 @@ class Order(BaseModel):
         CANCELLED = 'CANCELLED', 'Đã hủy'
     class PaymentMethod(models.TextChoices):
         MOMO = 'MOMO', 'Momo'
-        PAYPAL = 'PAYPAL', 'PayPal'
-        STRIPE = 'STRIPE', 'Stripe'
-        ZALOPAY = 'ZALOPAY', 'ZaloPay'
+        VNPAY = 'VNPAY', 'VNPay'
 
     customer = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
@@ -134,7 +132,7 @@ class Payment(BaseModel):
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
     transaction_id = models.CharField(max_length=255, blank=True, null=True)
-    payment_url = models.CharField(max_length=255, blank=True, null=True)
+    payment_url = models.TextField(default="")
     payment_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
@@ -149,3 +147,22 @@ class Developer(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class Cart(models.Model):
+    customer = models.OneToOneField('Account', on_delete=models.CASCADE, related_name='cart')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Cart of {self.customer.user.username}"
+
+class CartItem(BaseModel):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
+    game = models.ForeignKey('Game', on_delete=models.CASCADE)
+
+
+    class Meta:
+        unique_together = ('cart', 'game')  # Một game chỉ có 1 lần trong cart
+
+    def __str__(self):
+        return f"{self.game.title} in {self.cart.customer.user.username}'s cart"

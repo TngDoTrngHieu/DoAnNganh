@@ -61,7 +61,8 @@ def initiate_momo_payment(*, amount: int, order_info: str, redirect_url: str, ip
         'signature': signature
     }
 
-    logger.info(f"[MoMo] Initiating payment: {json.dumps(momo_data, ensure_ascii=False)}")
+    # Use ensure_ascii=True so logs contain only ASCII (avoid Windows console encoding errors)
+    logger.info(f"[MoMo] Initiating payment: {json.dumps(momo_data, ensure_ascii=True)}")
 
     response = requests.post(
         "https://test-payment.momo.vn/v2/gateway/api/create",

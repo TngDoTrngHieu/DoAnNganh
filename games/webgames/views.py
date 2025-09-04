@@ -1,26 +1,25 @@
-import uuid
-
 import logging
-from datetime import timezone
-
-from django.conf import settings
-import boto3
-from botocore.client import Config
-
-from django.contrib.auth import authenticate
-from django.db.models import Q
-from django.db import transaction
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import viewsets, generics, permissions, status, parsers
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.decorators import action
-from .momo import initiate_momo_payment
-from .serializers import *
-from .models import Game, Tag, Order, OrderItem, Review, Payment, Category, Account
+import uuid
 from datetime import datetime
 
+import boto3
+from botocore.client import Config
+from django.conf import settings
+from django.contrib.auth import authenticate
+from django.db.models import Q
+from rest_framework import viewsets, generics, permissions, status, parsers
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
+
+from .models import Game, Tag, Order, OrderItem, Review, Payment, Category, Account
+from .momo import initiate_momo_payment
+from .serializers import *
+from .vnpay import vnpay
 logger = logging.getLogger(__name__)
+from datetime import datetime, timezone, timedelta
+
 
 
 class CategoryViewset(viewsets.ViewSet, generics.ListAPIView):
@@ -71,10 +70,9 @@ class UserViewSet(viewsets.ViewSet):
         account = request.user.account
         if account.role == Account.Role.CUSTOMER:
             if not account.active:
-             return Response({'detail': 'Tài khoản CUSTOMER chưa được kích hoạt.'}, status=status.HTTP_403_FORBIDDEN)
+                return Response({'detail': 'Tài khoản CUSTOMER chưa được kích hoạt.'}, status=status.HTTP_403_FORBIDDEN)
         serializer = AccountRegisterSerializer(account)
         return Response(serializer.data)
-
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
@@ -113,7 +111,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 amount=amount,
                 order_info=f"Thanh toán đơn hàng #{order.id}",
                 redirect_url="http://localhost:3000/thank-you",
-                ipn_url="https://fdb846ef3066.ngrok-free.app/momo/webhook/",
+                ipn_url=" https://5e80becd1be2.ngrok-free.app/momo/webhook/",
                 momo_request_id=momo_request_id,
                 momo_order_id=momo_order_id
             )
@@ -160,6 +158,77 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 "details": str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @action(detail=False, methods=['post'], url_path='vnpay')
+    def create_vnpay_payment(self, request):
+        order_id = request.data.get("order_id")
+
+        try:
+            order = Order.objects.get(id=order_id)
+        except Order.DoesNotExist:
+            return Response({"error": "Order not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        amount = int(order.total_amount)
+        existing_payment = Payment.objects.filter(order=order).first()
+
+        if existing_payment and existing_payment.status == Payment.Status.COMPLETED:
+            return Response({
+                "error": "Order has already been paid",
+                "payment_id": existing_payment.id,
+                "status": existing_payment.status
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        vn_tz = timezone(timedelta(hours=7))
+        create_date = datetime.now(vn_tz).strftime('%Y%m%d%H%M%S')
+
+        vnp = vnpay()
+        vnp.requestData['vnp_Version'] = '2.1.0'
+        vnp.requestData['vnp_Command'] = 'pay'
+        vnp.requestData['vnp_TmnCode'] = settings.VNPAY_TMN_CODE
+        vnp.requestData['vnp_Amount'] = amount * 100
+        vnp.requestData['vnp_CurrCode'] = 'VND'
+        vnp.requestData['vnp_TxnRef'] = order.id
+        vnp.requestData['vnp_OrderInfo'] = f"Thanh toán đơn hàng #{order.id}"
+        vnp.requestData['vnp_OrderType'] = "billpayment"
+        vnp.requestData['vnp_Locale'] = 'vn'
+        vnp.requestData['vnp_ReturnUrl'] = settings.VNPAY_RETURN_URL
+        vnp.requestData['vnp_CreateDate'] = create_date
+        vnp.requestData['vnp_IpAddr'] = request.META.get('REMOTE_ADDR', '127.0.0.1')
+        import json
+        logger.info("[VNPAY] Request Data: " + json.dumps(vnp.requestData, indent=2, ensure_ascii=False))
+
+        try:
+            payment_url = vnp.get_payment_url(settings.VNPAY_PAYMENT_URL, settings.VNPAY_HASH_SECRET_KEY)
+            logger.info(f"[VNPAY] Payment URL generated: {payment_url}")
+
+        except Exception:
+            return Response({"error": "Failed to generate VNPAY payment URL"},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        if existing_payment:
+            existing_payment.status = Payment.Status.PENDING
+            existing_payment.transaction_id = str(uuid.uuid4())
+            existing_payment.payment_url = payment_url
+            existing_payment.save()
+            payment = existing_payment
+        else:
+            payment = Payment.objects.create(
+                order=order,
+                amount=amount,
+                status=Payment.Status.PENDING,
+                transaction_id=str(uuid.uuid4()),
+                payment_url=payment_url,
+                payment_date=datetime.now(timezone(timedelta(hours=7)))
+            )
+
+        order.payment_method = Order.PaymentMethod.VNPAY
+        order.save(update_fields=["payment_method"])
+
+        return Response({
+            "payment_id": payment.id,
+            "status": payment.get_status_display(),
+            "payment_url": payment_url
+        }, status=status.HTTP_200_OK)
+
 class GameViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIView):
     queryset = Game.objects.filter(active=True)
     serializer_class = GameSerializer
@@ -168,43 +237,30 @@ class GameViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIVi
         queryset = Game.objects.filter(active=True)
         params = self.request.query_params
 
-        # Filter by category
+        # Category
         category_id = params.get('category_id')
         if category_id:
-            try:
-                queryset = queryset.filter(categories__id=int(category_id))
-            except ValueError:
-                pass
+            queryset = queryset.filter(categories__id=int(category_id))
 
-        # Filter by tag
+        # Tag
         tag_id = params.get('tag_id')
         if tag_id:
-            try:
-                queryset = queryset.filter(tags__id=int(tag_id))
-            except ValueError:
-                pass
+            queryset = queryset.filter(tags__id=int(tag_id))
 
-        # Search by title
+        # Search
         q = params.get('q')
         if q:
             queryset = queryset.filter(Q(title__icontains=q))
 
         # Price range
         price_min = params.get('price_min')
-        price_max = params.get('price_max')
         if price_min:
-            try:
-                queryset = queryset.filter(price__gte=float(price_min))
-            except ValueError:
-                pass
+            queryset = queryset.filter(price__gte=float(price_min))
+        price_max = params.get('price_max')
         if price_max:
-            try:
-                queryset = queryset.filter(price__lte=float(price_max))
-            except ValueError:
-                pass
+            queryset = queryset.filter(price__lte=float(price_max))
 
-        queryset = queryset.distinct()
-        return queryset
+        return queryset.distinct()
 
     @action(detail=True, methods=['get'], permission_classes=[permissions.IsAuthenticated], url_path='download')
     def download(self, request, pk=None):
@@ -239,7 +295,6 @@ class GameViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIVi
         if not game.file:
             return Response({'detail': 'File không tồn tại'}, status=status.HTTP_404_NOT_FOUND)
 
-
         s3 = boto3.client(
             's3',
             region_name=settings.AWS_S3_REGION_NAME,
@@ -268,6 +323,7 @@ class GameViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIVi
 class TagViewSet(viewsets.ViewSet, generics.ListAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+
 
 class OrderViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -299,6 +355,7 @@ class OrderViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIV
         except Exception as e:
             logger.exception("Create order failed")
             return Response({'detail': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     # lay danh sach game da mua
 
     @action(detail=False, methods=['get'])
@@ -313,8 +370,9 @@ class OrderViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIV
 
         list_games = GameSerializer(games, many=True)
 
+        return Response(list_games.data, status=status.HTTP_200_OK)
 
-        return Response( list_games.data,status=status.HTTP_200_OK)
+
 class ReviewViewSet(viewsets.ViewSet, generics.ListAPIView):
     serializer_class = ReviewSerializer
 
@@ -361,8 +419,115 @@ class ReviewViewSet(viewsets.ViewSet, generics.ListAPIView):
         return Response(ReviewSerializer(review).data, status=status.HTTP_201_CREATED)
 
 
+class CartViewSet(viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_cart(self, account):
+        cart, _ = Cart.objects.get_or_create(customer=account)
+        return cart
+
+    @action(detail=False, methods=['get'])
+    def items(self, request):
+        account = request.user.account
+        cart = self.get_cart(account)
+        serializer = CartSerializer(cart)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['post'])
+    def add_item(self, request):
+        account = request.user.account
+        game_id = request.data.get('game_id')
+        if not game_id:
+            return Response({'detail': 'Thiếu game_id'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            game = Game.objects.get(pk=game_id, active=True)
+        except Game.DoesNotExist:
+            return Response({'detail': 'Game không tồn tại'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Kiểm tra đã mua game chưa
+        purchased = OrderItem.objects.filter(
+            order__customer=account,
+            order__status__in=[Order.Status.CONFIRMED, Order.Status.COMPLETED],
+            game=game
+        ).exists()
+        if purchased:
+            return Response({'detail': 'Bạn đã mua game này rồi, không thể thêm vào giỏ hàng.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        cart = self.get_cart(account)
+        if CartItem.objects.filter(cart=cart, game=game).exists():
+            return Response({'detail': 'Game đã có trong giỏ hàng.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        item = CartItem.objects.create(cart=cart, game=game)
+        return Response(CartItemSerializer(item).data, status=status.HTTP_201_CREATED)
+
+    # xoa 1 game
+    @action(detail=False, methods=['delete'])
+    def remove_item(self, request):
+        account = request.user.account
+        game_id = request.data.get('game_id')
+        cart = self.get_cart(account)
+        try:
+            item = CartItem.objects.get(cart=cart, game_id=game_id)
+            item.delete()
+            return Response({'detail': 'Đã xóa game khỏi giỏ hàng.'}, status=status.HTTP_204_NO_CONTENT)
+        except CartItem.DoesNotExist:
+            return Response({'detail': 'Game không có trong giỏ hàng.'}, status=status.HTTP_404_NOT_FOUND)
+
+    # xoa nhieu game
+    @action(detail=False, methods=['delete'])
+    def clear(self, request):
+        account = request.user.account
+        cart = self.get_cart(account)
+        cart.items.all().delete()
+        return Response({'detail': 'Đã xóa toàn bộ giỏ hàng.'}, status=status.HTTP_204_NO_CONTENT)
+
+    def clear_items_after_purchase(self, account, games):
+        cart = self.get_cart(account)
+        CartItem.objects.filter(cart=cart, game__in=games).delete()
 
 
+class RevenueStatsView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
 
+    def get(self, request):
+        # --- 1. Doanh thu tổng theo tháng (gộp) ---
+        revenue_dict = {}
+        orders = Order.objects.all()
+        for order in orders:
+            key = (order.created_at.year, order.created_at.month)
+            if key in revenue_dict:
+                revenue_dict[key] += order.total_amount
+            else:
+                revenue_dict[key] = order.total_amount
 
+        revenue_total = [
+            {"year": year, "month": month, "total": total}
+            for (year, month), total in sorted(revenue_dict.items())
+        ]
 
+        categories = Category.objects.all()
+        # --- 3. Số lượng game theo category ---
+        quantity_by_category = []
+        for c in categories:
+            qty = Game.objects.filter(categories=c).count()
+            quantity_by_category.append({
+                "category": c.name,
+                "quantity": qty
+            })
+
+        # --- 4. Số lượng game theo tag ---
+        quantity_by_tag = []
+        tags = Tag.objects.all()
+        for t in tags:
+            qty = Game.objects.filter(tags=t).count()
+            quantity_by_tag.append({
+                "tag": t.name,
+                "quantity": qty
+            })
+
+        return Response({
+            "revenue_total": revenue_total,
+            "quantity_by_category": quantity_by_category,
+            "quantity_by_tag": quantity_by_tag
+        })
