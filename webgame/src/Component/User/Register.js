@@ -60,10 +60,10 @@ function Register() {
     <div style={{ minHeight: '100vh', background: 'radial-gradient(1000px 600px at 50% -20%, #2a475e 0%, #1b2838 60%, #171a21 100%)', color: '#c7d5e0' }}>
   
 
-      <div className="container" style={{ maxWidth: 480, margin: '0 auto', paddingTop: 80 }}>
-        <div className="card" style={{ background: '#1b2838', border: 'none', boxShadow: '0 6px 24px rgba(0,0,0,0.4)' }}>
+      <div className="container mt-5" >
+        <div className="card" >
           <div className="card-body">
-            <h1 className="h4 text-center mb-3" style={{ color: '#c7d5e0' }}>Đăng ký</h1>
+            <h1 className="h4 text-center mb-3" >Đăng ký</h1>
             {error && (
               <div className="alert alert-danger py-2" role="alert">
                 {error}
@@ -90,15 +90,15 @@ function Register() {
             <div className="mb-3 mt-3">
               <label htmlFor="phone_number" className="form-label">Số điện thoại</label>
               <input type="tel" className="form-control" id="phone_number" placeholder="Ví dụ: +84901234567" value={form.phone_number} onChange={handleChange} />
-              <div className="form-text" style={{ color: '#8f98a0' }}>Định dạng: +84901234567 hoặc 0901234567 (9-15 chữ số).</div>
+              <div className="form-text" >Định dạng: +84901234567 hoặc 0901234567 (9-15 chữ số).</div>
             </div>
             <div className="d-grid">
               <button type="button" className="btn" disabled={submitting} onClick={onSubmit} style={{ background: '#66c0f4', color: '#171a21' }}>
                 {submitting ? 'Đang tạo...' : 'Tạo tài khoản'}
               </button>
             </div>
-            <div className="text-center mt-3" style={{ opacity: 0.85 }}>
-              Đã có tài khoản? <button className="btn btn-link p-0" style={{ color: '#66c0f4', textDecoration: 'none' }} onClick={() => navigate('/login')}>Đăng nhập</button>
+            <div className="text-center mt-3" >
+              Đã có tài khoản? <button className="btn btn-link p-0" onClick={() => navigate('/login')}>Đăng nhập</button>
             </div>
           </div>
         </div>

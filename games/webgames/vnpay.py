@@ -4,6 +4,7 @@ import urllib.parse
 import json
 from datetime import datetime, timezone, timedelta
 from django.conf import settings
+from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from webgames.models import Payment
@@ -61,8 +62,7 @@ class vnpay:
 
 @api_view(['GET'])
 def vnpay_return(request):
-    """API callback khi VNPAY trả về"""
-    vnp = VnPay()
+    vnp = vnpay()
     vnp.responseData = request.GET.dict()
 
     if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
@@ -70,15 +70,16 @@ def vnpay_return(request):
         rsp_code = vnp.responseData.get('vnp_ResponseCode')
 
         payment = Payment.objects.filter(order_id=txn_ref).first()
-        if not payment:
-            return Response({"error": "Payment not found"}, status=404)
+        if payment:
+            if rsp_code == '00':
+                payment.status = Payment.Status.COMPLETED
+                if payment.order:
+                    payment.order.status = payment.order.Status.COMPLETED
+                    payment.order.save(update_fields=["status"]) 
+            else:
+                payment.status = Payment.Status.FAILED
+            payment.save(update_fields=["status"]) 
 
-        if rsp_code == '00':
-            payment.status = Payment.Status.COMPLETED
-        else:
-            payment.status = Payment.Status.FAILED
-        payment.save()
+        frontend_thankyou = f"{settings.FRONTEND_BASE_URL}/thank-you?order_id={txn_ref}&status={'success' if rsp_code=='00' else 'failed'}"
+        return redirect(frontend_thankyou)
 
-        return Response({"message": "Payment processed", "status": payment.status})
-    else:
-        return Response({"error": "Invalid signature"}, status=400)

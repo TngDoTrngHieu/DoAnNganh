@@ -83,13 +83,10 @@ def initiate_momo_payment(*, amount: int, order_info: str, redirect_url: str, ip
 @csrf_exempt
 @api_view(['POST'])
 def create_momo_payment(request):
-    """
-    Create a payment request to MoMo API
-    """
+
     try:
         # Extract data from request
         data = request.data
-        logger.info(f"Received payment request data: {json.dumps(data, indent=2)}")
 
         amount = data.get('amount')
         order_info = data.get('order_info')
@@ -97,7 +94,7 @@ def create_momo_payment(request):
         ipn_url = data.get('ipn_url')
         order_id = data.get('orderId')
 
-        # Validate required fields
+
         if not all([amount, order_info, redirect_url, ipn_url, order_id]):
             missing_fields = []
             if not amount: missing_fields.append('amount')
@@ -106,8 +103,7 @@ def create_momo_payment(request):
             if not ipn_url: missing_fields.append('ipn_url')
             if not order_id: missing_fields.append('orderId')
 
-            logger.error(f"Missing required parameters: {missing_fields}")
-            logger.error(f"Received data: {data}")
+
             return Response(
                 {"error": f"Missing required parameters: {', '.join(missing_fields)}"},
                 status=status.HTTP_400_BAD_REQUEST
@@ -127,7 +123,7 @@ def create_momo_payment(request):
         access_key = TEST_ACCESS_KEY
         secret_key = TEST_SECRET_KEY
 
-        logger.info(f"Using MoMo test credentials - Partner Code: {partner_code}, Access Key: {access_key}")
+ 
 
         # Generate request ID
         request_id = str(uuid.uuid4())
@@ -142,15 +138,11 @@ def create_momo_payment(request):
             f"&requestId={request_id}&requestType={request_type}"
         )
 
-        logger.info(f"Raw signature string: {raw_signature}")
-
         signature = hmac.new(
             secret_key.encode('utf-8'),
             raw_signature.encode('utf-8'),
             hashlib.sha256
         ).hexdigest()
-
-        logger.info(f"Generated signature: {signature}")
 
         # Prepare request data
         momo_data = {
@@ -169,7 +161,6 @@ def create_momo_payment(request):
             'signature': signature
         }
 
-        logger.info(f"Sending to MoMo: {json.dumps(momo_data, indent=2)}")
 
         # Make request to MoMo API
         response = requests.post(
@@ -179,10 +170,8 @@ def create_momo_payment(request):
             timeout=10
         )
 
-        # Log response for debugging
-        logger.info(f"MoMo response status: {response.status_code}")
-        logger.info(f"MoMo response headers: {dict(response.headers)}")
-        logger.info(f"MoMo response body: {response.text}")
+
+
 
         if response.status_code != 200:
             error_msg = f"MoMo API error: {response.status_code} - {response.text}"
@@ -193,7 +182,7 @@ def create_momo_payment(request):
             )
 
         response_data = response.json()
-        logger.info(f"Parsed MoMo response: {json.dumps(response_data, indent=2)}")
+
 
         # Create or update payment record
         payment, created = Payment.objects.get_or_create(
@@ -225,13 +214,13 @@ def create_momo_payment(request):
         error_msg = f"Error calling MoMo API: {str(e)}"
         if hasattr(e, 'response') and e.response:
             error_msg += f" - Response: {e.response.text}"
-        logger.exception(error_msg)
+
         return Response(
             {"error": "Failed to create payment", "details": str(e)},
             status=status.HTTP_400_BAD_REQUEST
         )
     except Exception as e:
-        logger.exception(f"Unexpected error: {e}")
+
         return Response(
             {"error": "Internal server error", "details": str(e)},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR

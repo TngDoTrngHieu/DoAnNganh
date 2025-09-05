@@ -1,5 +1,5 @@
 from django.conf import settings
-from requests import Response
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from webgames.models import Payment
@@ -19,7 +19,13 @@ def vnpay_ipn(request):
         if not payment:
             return Response({"RspCode": "01", "Message": "Order not found"})
 
-        payment.status = Payment.Status.COMPLETED if rsp_code == '00' else Payment.Status.FAILED
-        payment.save()
+        if rsp_code == '00':
+            payment.status = Payment.Status.COMPLETED
+            if payment.order:
+                payment.order.status = payment.order.Status.COMPLETED
+                payment.order.save(update_fields=["status"]) 
+        else:
+            payment.status = Payment.Status.FAILED
+        payment.save(update_fields=["status"]) 
         return Response({"RspCode": "00", "Message": "Confirm Success"})
     return Response({"RspCode": "97", "Message": "Invalid Signature"})

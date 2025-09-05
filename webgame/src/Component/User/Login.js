@@ -25,17 +25,16 @@ function Login() {
     setError('');
     setSubmitting(true);
     try {
-      // Gọi API login
+
       const res = await loginUser({ username: form.username, password: form.password });
       const { access, refresh } = res.data || {};
 
       if (access) localStorage.setItem('access_token', access);
       if (refresh) localStorage.setItem('refresh_token', refresh);
 
-      // Lấy thông tin user từ backend
       try {
         const u = await getCurrentUser();
-        setUser(u.data);   // 👈 cập nhật vào context -> Header re-render ngay
+        setUser(u.data);   
       } catch {
         setUser(null);
       }
@@ -50,10 +49,10 @@ function Login() {
   };
 
   return (
-    <div className="container" style={{ maxWidth: 420, margin: '0 auto', paddingTop: 80 }}>
-      <div className="card" style={{ background: '#1b2838', border: 'none', boxShadow: '0 6px 24px rgba(0,0,0,0.4)' }}>
+    <div className="container mt-5">
+      <div className="card" >
         <div className="card-body">
-          <h1 className="h4 text-center mb-3" style={{ color: '#c7d5e0' }}>Đăng nhập</h1>
+          <h1 className="h4 text-center mb-3" >Đăng nhập</h1>
           {error && (
             <div className="alert alert-danger py-2" role="alert">{error}</div>
           )}
@@ -90,11 +89,11 @@ function Login() {
               {submitting ? 'Đang đăng nhập...' : 'Đăng nhập'}
             </button>
           </div>
-          <div className="text-center mt-3" style={{ opacity: 0.85 }}>
+          <div className="text-center mt-3" >
             Chưa có tài khoản?{' '}
             <button
               className="btn btn-link p-0"
-              style={{ color: '#66c0f4', textDecoration: 'none' }}
+              
               onClick={() => navigate('/register')}
             >
               Đăng ký

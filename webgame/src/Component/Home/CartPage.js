@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getCartItems, removeFromCart } from "../../configs/Api";
+import { getCartItems, removeFromCart, createOrder, createMomoPayment, createVnpayPayment } from "../../configs/Api";
 
 function CartPage() {
-  const navigate = useNavigate();
+
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,16 +27,40 @@ function CartPage() {
     try {
       await removeFromCart(gameId);
       setCartItems((prev) => prev.filter((item) => item.game !== gameId));
+      window.dispatchEvent(new CustomEvent('cart-updated'));
     } catch (e) {
       console.error("Lỗi khi xóa game:", e);
     }
   };
 
-  // Thanh toán: chuyển sang trang checkout
-  const checkout = () => {
+  // Mua toàn bộ bằng MoMo
+  const buyAllWithMomo = async () => {
     if (cartItems.length === 0) return;
-    const ids = cartItems.map((item) => item.game);
-    navigate("/checkout?ids=" + encodeURIComponent(JSON.stringify(ids)));
+    try {
+      const ids = cartItems.map((item) => item.game);
+      const orderRes = await createOrder(ids);
+      const orderId = orderRes.data.id;
+      const payRes = await createMomoPayment(orderId);
+      window.location.href = payRes.data.payUrl;
+    } catch (e) {
+      console.error('MoMo payment error:', e);
+      alert('Không thể thanh toán MoMo');
+    }
+  };
+
+  // Mua toàn bộ bằng VNPAY
+  const buyAllWithVnpay = async () => {
+    if (cartItems.length === 0) return;
+    try {
+      const ids = cartItems.map((item) => item.game);
+      const orderRes = await createOrder(ids);
+      const orderId = orderRes.data.id;
+      const payRes = await createVnpayPayment(orderId);
+      window.location.href = payRes.data.payment_url;
+    } catch (e) {
+      console.error('VNPAY payment error:', e);
+      alert('Không thể thanh toán VNPAY');
+    }
   };
 
   // Tổng tiền
@@ -78,7 +101,7 @@ function CartPage() {
               </li>
             ))}
           </ul>
-          <div className="d-flex justify-content-between align-items-center">
+          <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2">
             <div>
               Tổng:{" "}
               <strong>
@@ -88,9 +111,10 @@ function CartPage() {
                 }).format(total)}
               </strong>
             </div>
-            <button className="btn btn-primary" onClick={checkout}>
-              Thanh toán
-            </button>
+            <div className="d-flex gap-2">
+              <button className="btn btn-warning" onClick={buyAllWithVnpay}>Mua bằng VNPAY</button>
+              <button className="btn btn-primary" onClick={buyAllWithMomo}>Mua bằng MoMo</button>
+            </div>
           </div>
         </>
       )}
