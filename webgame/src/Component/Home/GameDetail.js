@@ -1,183 +1,218 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import api, { endpoints, getReviews, createReviewApi, createOrder, createMomoPayment, createVnpayPayment } from '../../configs/Api';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { getGames, addToCart, getTags, getCategories } from '../../configs/Api';
+import { AuthContext } from "../User/AuthContext";
 
-function GameDetail() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [game, setGame] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [downloadUrl, ] = useState('');
+function HomePage() {
+    const [games, setGames] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [tags, setTags] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [q, setQ] = useState(searchParams.get('q') || '');
+    const [selectedTag, setSelectedTag] = useState(searchParams.get('tag_id') || '');
+    const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category_id') || '');
+    const [priceMin, setPriceMin] = useState(searchParams.get('price_min') || '');
+    const [priceMax, setPriceMax] = useState(searchParams.get('price_max') || '');
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
 
-  const [reviews, setReviews] = useState([]);
-  const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '' });
-  const [submittingReview, setSubmittingReview] = useState(false);
+    const navigate = useNavigate();
+    const { setCartCount } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (!id) return;
-    api.get(endpoints.gameDetail(id))
-      .then(res => setGame(res.data))
-      .catch(() => setError('Không thể tải thông tin game.'))
-      .finally(() => setLoading(false));
+    // Load tags và categories
+    useEffect(() => {
+        getTags().then(res => setTags(res.data)).catch(() => setTags([]));
+        getCategories().then(res => setCategories(res.data)).catch(() => setCategories([]));
+    }, []);
 
-    getReviews(id)
-      .then(res => setReviews(Array.isArray(res.data) ? res.data : (res.data?.results ?? [])))
-      .catch(() => setReviews([]));
-  }, [id]);
+    // Hàm load game, reset = true khi filter/search thay đổi
+    const loadGames = async (reset = false) => {
+        setLoading(true);
+        try {
+            const params = {
+                q,
+                tag_id: selectedTag,
+                category_id: selectedCategory,
+                price_min: priceMin,
+                price_max: priceMax,
+                page
+            };
 
-  const handleDownload = () => {
-    if (!downloadUrl) return;
-    const win = window.open(downloadUrl, '_blank', 'noopener,noreferrer');
-    if (!win) window.location.href = downloadUrl;
-  };
+            const response = await getGames(params);
+            const data = Array.isArray(response.data)
+                ? response.data
+                : response.data?.results || [];
 
+            if (reset) setGames(data);
+            else setGames(prev => [...prev, ...data]);
 
+            if (data.length === 0) setHasMore(false);
+            else setHasMore(true);
+        } catch (error) {
+            console.error('Lỗi khi lấy danh sách game:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  const handleAddToCart = async (gid) => {
-    try {
-      await axios.post('/carts/add_item/', { game_id: gid }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` },
-      });
-      alert('Đã thêm vào giỏ');
-    } catch (e) {
-      alert(e?.response?.data?.detail || 'Lỗi khi thêm vào giỏ');
-    }
-  };
+    // Load game khi searchParams thay đổi (filter/search)
+    useEffect(() => {
+        setQ(searchParams.get('q') || '');
+        setSelectedTag(searchParams.get('tag_id') || '');
+        setSelectedCategory(searchParams.get('category_id') || '');
+        setPriceMin(searchParams.get('price_min') || '');
+        setPriceMax(searchParams.get('price_max') || '');
+        setPage(1);
+        loadGames(true);
+    }, [searchParams]);
 
-  const submitReview = async () => {
-    if (!id || !reviewForm.rating) return;
-    setSubmittingReview(true);
-    try {
-      await createReviewApi({ game: Number(id), rating: Number(reviewForm.rating), comment: reviewForm.comment });
-      const res = await getReviews(id);
-      setReviews(Array.isArray(res.data) ? res.data : (res.data?.results ?? []));
-      setReviewForm({ rating: 5, comment: '' });
-      alert('Đã gửi đánh giá');
-    } catch (e) {
-      alert(e?.response?.data?.detail || 'Không thể gửi đánh giá (cần mua game trước)');
-    } finally {
-      setSubmittingReview(false);
-    }
-  };
+    // Load thêm page khi page thay đổi
+    useEffect(() => {
+        if (page > 1) loadGames();
+    }, [page]);
 
-  const handleMomoPayment = async () => {
-    try {
-      const orderRes = await createOrder([id]);
-      const orderId = orderRes.data.id;
-      const payRes = await createMomoPayment(orderId);
-      window.location.href = payRes.data.payUrl;
-    } catch {
-      alert('Không thể thanh toán MoMo');
-    }
-  };
+    const formatVND = (value) => {
+        const num = Number(value);
+        if (Number.isNaN(num)) return value;
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(num);
+    };
 
-  const handleVnpayPayment = async () => {
-    try {
-      const orderRes = await createOrder([id]);
-      const orderId = orderRes.data.id;
-      const payRes = await createVnpayPayment(orderId);
-      window.location.href = payRes.data.payment_url;
-    } catch {
-      alert('Không thể thanh toán VNPAY');
-    }
-  };
+    const handleAddToCart = async (id) => {
+        try {
+            await addToCart(id);
+            alert('Đã thêm vào giỏ');
+            setCartCount(prev => prev + 1);
+        } catch (e) {
+            const msg = e?.response?.data?.detail || 'Lỗi khi thêm vào giỏ';
+            alert(msg);
+        }
+    };
 
-  const formatVND = (value) => {
-    const num = Number(value);
-    if (Number.isNaN(num)) return value;
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(num);
-  };
+    const handleFilter = (e) => {
+        e.preventDefault();
+        const params = {};
+        if (q) params.q = q;
+        if (selectedTag) params.tag_id = selectedTag;
+        if (selectedCategory) params.category_id = selectedCategory;
+        if (priceMin) params.price_min = priceMin;
+        if (priceMax) params.price_max = priceMax;
+        setSearchParams(params);
+    };
 
-  if (loading) return <div className="text-center py-5 text-light">Đang tải...</div>;
-  if (error) return <div className="text-center py-5 text-danger">{error}</div>;
-  if (!game) return null;
+    const loadMore = () => {
+        if (hasMore && !loading) setPage(prev => prev + 1);
+    };
 
-  return (
-    <div style={{ minHeight: '100vh', background: '#171a21', color: '#c7d5e0' }}>
-      <div className="container py-4">
-        <button className="btn btn-outline-light btn-sm mb-3" onClick={() => navigate(-1)}>Quay lại</button>
+    if (loading && games.length === 0) return <div className="text-center py-5 text-light">Đang tải game...</div>;
 
-        <div className="row g-4">
-          <div className="col-12 col-lg-5">
-            <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
-              <img src={game.image} alt={game.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+    return (
+        <div>
+            <div className="container my-4">
+                {/* FILTER BAR */}
+                <form onSubmit={handleFilter} className="mb-4 p-3 rounded" style={{ background: '#1b2838' }}>
+                    <div className="row g-2">
+                        <div className="col-md-3">
+                            <select
+                                className="form-select"
+                                value={selectedCategory}
+                                onChange={e => setSelectedCategory(e.target.value)}
+                            >
+                                <option value="">-- Chọn Category --</option>
+                                {categories.map(cat => (
+                                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="col-md-3">
+                            <select
+                                className="form-select"
+                                value={selectedTag}
+                                onChange={e => setSelectedTag(e.target.value)}
+                            >
+                                <option value="">-- Chọn Tag --</option>
+                                {tags.map(tag => (
+                                    <option key={tag.id} value={tag.id}>{tag.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="col-md-2">
+                            <input
+                                type="number"
+                                value={priceMin}
+                                onChange={e => setPriceMin(e.target.value)}
+                                className="form-control"
+                                placeholder="Giá từ"
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <input
+                                type="number"
+                                value={priceMax}
+                                onChange={e => setPriceMax(e.target.value)}
+                                className="form-control"
+                                placeholder="Đến"
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <button className="btn btn-primary w-100" style={{ background: '#66c0f4', border: 'none', color: '#171a21' }}>
+                                Lọc
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                {/* GAME LIST */}
+                {games.length === 0 ? (
+                    <div className="text-center text-light">Không có game để hiển thị.</div>
+                ) : (
+                    <div className="row g-4">
+                        {games.map(game => (
+                            <div key={game.id} className="col-12 col-sm-6 col-lg-4">
+                                <div className="card h-100" style={{ background: '#1b2838', border: 'none', color: '#c7d5e0' }}>
+                                    <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
+                                        <img
+                                            src={game.image}
+                                            alt={game.title}
+                                            loading="lazy"
+                                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                                        />
+                                    </div>
+                                    <div className="card-body">
+                                        <h5 className="card-title" style={{ color: '#66c0f4' }}>{game.title}</h5>
+                                        <p className="card-text fw-bold mb-3">{formatVND(game.price)}</p>
+                                        <div className="d-flex gap-2">
+                                            <button
+                                                onClick={() => navigate(`/games/${game.id}`)}
+                                                className="btn btn-primary"
+                                                style={{ background: '#66c0f4', borderColor: '#66c0f4', color: '#171a21' }}
+                                            >
+                                                Xem
+                                            </button>
+                                            <button
+                                                onClick={() => handleAddToCart(game.id)}
+                                                className="btn btn-outline-light"
+                                            >
+                                                Thêm vào giỏ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {hasMore >0 && (
+                    <div className="text-center my-4">
+                        <button className="btn btn-primary" onClick={loadMore}>
+                            {loading ? 'Đang tải...' : 'Xem thêm'}
+                        </button>
+                    </div>
+                )}
             </div>
-          </div>
-          <div className="col-12 col-lg-7">
-            <h2 style={{ color: '#66c0f4' }}>{game.title}</h2>
-            <div className="mb-2 small text-muted">
-              {Array.isArray(game.categories) ? game.categories.map(c => c.name).join(', ') : ''}
-            </div>
-            <p className="mt-3">{game.description}</p>
-
-            <div className="d-flex align-items-center gap-3 mt-4">
-              <span className="fs-4 fw-bold">{formatVND(game.price)}</span>
-
-              {downloadUrl ? (
-                <button className="btn btn-outline-light" onClick={handleDownload}>Tải xuống</button>
-              ) : (
-                <>
-                  <button className="btn btn-primary" onClick={handleMomoPayment}>Mua ngay MoMo</button>
-                  <button className="btn btn-warning" onClick={handleVnpayPayment}>Mua ngay VNPAY</button>
-                  <button className="btn btn-outline-light" onClick={() => handleAddToCart(id)}>Thêm vào giỏ</button>
-                </>
-              )}
-
-            </div>
-
-            <div className="mt-4">
-              <div><strong>Nhà phát triển:</strong> {game.developer || 'N/A'}</div>
-              <div className="mt-2"><strong>Tag:</strong> {Array.isArray(game.tags) ? game.tags.map(t => t.name).join(', ') : 'N/A'}</div>
-              <div className="mt-2"><strong>Lượt xem:</strong> {game.view_count}</div>
-              <div className="mt-2"><strong>Đã mua:</strong> {game.purchase_count}</div>
-              <div className="mt-2 text-muted"><small>Ngày tạo: {game.created_at ? new Date(game.created_at).toLocaleString() : '—'}</small></div>
-              <div className="mt-1 text-muted"><small>Cập nhật: {game.update_at ? new Date(game.update_at).toLocaleString() : '—'}</small></div>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <div className="container py-4">
-        <h4 style={{ color: '#66c0f4' }}>Đánh giá</h4>
-        {reviews.length === 0 ? (
-          <div className="text-muted">Chưa có đánh giá.</div>
-        ) : (
-          <ul className="list-group mb-3">
-            {reviews.map(r => (
-              <li key={r.id} className="list-group-item" style={{ background: '#1b2838', color: '#c7d5e0' }}>
-                <div className="d-flex justify-content-between">
-                  <div><strong>{r.customer}</strong> – {r.rating} sao</div>
-                  <div className="text-muted" style={{ fontSize: 12 }}>{r.created_at ? new Date(r.created_at).toLocaleString() : ''}</div>
-                </div>
-                <div>{r.comment}</div>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className="card" style={{ background: '#1b2838', border: 'none' }}>
-          <div className="card-body">
-            <div className="row g-2 align-items-center">
-              <div className="col-auto">Đánh giá của bạn:</div>
-              <div className="col-auto">
-                <select className="form-select" value={reviewForm.rating} onChange={e => setReviewForm({ ...reviewForm, rating: e.target.value })}>
-                  {[5, 4, 3, 2, 1].map(v => <option key={v} value={v}>{v} sao</option>)}
-                </select>
-              </div>
-              <div className="col">
-                <input className="form-control" placeholder="Nhận xét..." value={reviewForm.comment} onChange={e => setReviewForm({ ...reviewForm, comment: e.target.value })} />
-              </div>
-              <div className="col-auto">
-                <button className="btn btn-primary" disabled={submittingReview} onClick={submitReview}>Gửi</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
-export default GameDetail;
+export default HomePage;

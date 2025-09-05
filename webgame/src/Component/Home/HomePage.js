@@ -16,6 +16,7 @@ function HomePage() {
   const [priceMax, setPriceMax] = useState(searchParams.get('price_max') || '');
   const navigate = useNavigate();
   const { setCartCount } = useContext(AuthContext);
+  const [page, setPage] = useState(1);
 
   // Load tags và categories
   useEffect(() => {
@@ -89,7 +90,7 @@ function HomePage() {
   if (loading) return <div className="text-center py-5 text-light">Đang tải game...</div>;
 
   return (
-    <div style={{ background: '#171a21', color: '#c7d5e0', minHeight: '100%' }}>
+    <div>
       <div className="container my-4">
 
         {/* FILTER BAR */}

@@ -83,16 +83,12 @@ class PaymentViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['post'], url_path='momo')
     def create_momo_payment_view(self, request):
         order_id = request.data.get("order_id")
-
         try:
             order = Order.objects.get(id=order_id)
         except Order.DoesNotExist:
             return Response({"error": "Order not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Use the order's actual total amount to prevent tampering
         amount = int(order.total_amount)
-
-        # Check if payment already exists for this order
         existing_payment = Payment.objects.filter(order=order).first()
         if existing_payment and existing_payment.status == Payment.Status.COMPLETED:
             return Response({
@@ -100,13 +96,11 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 "payment_id": existing_payment.id,
                 "status": existing_payment.status
             }, status=status.HTTP_400_BAD_REQUEST)
-
-        # Generate a unique request ID for MoMo
         momo_request_id = str(uuid.uuid4())
         momo_order_id = f"ORDER_{order.id}_{momo_request_id[:8]}"
 
         try:
-            # Call MoMo API
+
             momo_response = initiate_momo_payment(
                 amount=amount,
                 order_info=f"Thanh toán đơn hàng #{order.id}",
@@ -115,23 +109,18 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 momo_request_id=momo_request_id,
                 momo_order_id=momo_order_id
             )
-
-            # Check if MoMo response is valid
             if 'payUrl' not in momo_response:
-                logger.error(f"Invalid MoMo response: {momo_response}")
                 return Response({
                     "error": "Failed to create payment with MoMo",
                     "details": momo_response.get('message', 'Unknown error')
                 }, status=status.HTTP_502_BAD_GATEWAY)
 
-            # Mark order payment method
             order.payment_method = Order.PaymentMethod.MOMO
             order.save(update_fields=["payment_method"])
 
-            # Create or update the Payment record
             if existing_payment:
                 existing_payment.status = Payment.Status.PENDING
-                existing_payment.transaction_id = momo_order_id  # Store MoMo's order ID
+                existing_payment.transaction_id = momo_order_id  
                 existing_payment.payment_url = momo_response.get('payUrl')
                 existing_payment.save()
                 payment = existing_payment
@@ -140,7 +129,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
                     order=order,
                     amount=amount,
                     status=Payment.Status.PENDING,
-                    transaction_id=momo_order_id,  # Đây là orderId MoMo sẽ gửi lại
+                    transaction_id=momo_order_id, 
                     payment_url=momo_response.get('payUrl'),
                     payment_date=datetime.now()
                 )
@@ -152,7 +141,6 @@ class PaymentViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_200_OK)
 
         except Exception as e:
-            logger.exception(f"Error creating MoMo payment: {str(e)}")
             return Response({
                 "error": "Failed to process payment",
                 "details": str(e)
@@ -193,9 +181,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
         vnp.requestData['vnp_ReturnUrl'] = settings.VNPAY_RETURN_URL
         vnp.requestData['vnp_CreateDate'] = create_date
         vnp.requestData['vnp_IpAddr'] = request.META.get('REMOTE_ADDR', '127.0.0.1')
-        import json
-        logger.info("[VNPAY] Request Data: " + json.dumps(vnp.requestData, indent=2, ensure_ascii=False))
-
+   
         try:
             payment_url = vnp.get_payment_url(settings.VNPAY_PAYMENT_URL, settings.VNPAY_HASH_SECRET_KEY)
             logger.info(f"[VNPAY] Payment URL generated: {payment_url}")

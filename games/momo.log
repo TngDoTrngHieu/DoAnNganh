@@ -816,3 +816,691 @@ AttributeError: 'Request' object has no attribute 'remote_addr'
 [2025-09-04 15:20:54,078] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
 [2025-09-04 15:20:55,456] INFO django.utils.autoreload Watching for file changes with StatReloader
 [2025-09-04 15:32:22,883] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 15:41:18,062] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:17:54,474] INFO django.utils.autoreload E:\WebGame\games\webgames\urls.py changed, reloading.
+[2025-09-05 16:17:55,825] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:21:40,354] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 16:21:41,875] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:21:53,024] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:21:54,444] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:24:07,373] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 16:24:08,743] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:24:46,803] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:24:48,166] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:27:14,454] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:27:15,906] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:28:29,290] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:28:30,728] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:28:44,655] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 16:28:46,106] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:29:29,650] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:29:30,911] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:29:42,496] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:29:43,770] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:29:49,239] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:29:50,536] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:30:24,191] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 16:36:59,197] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 16:37:01,980] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 16:37:10,247] ERROR django.request Internal Server Error: /payments/vnpay/
+Traceback (most recent call last):
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "E:\WebGame\venv\games\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "E:\WebGame\games\webgames\views.py", line 182, in create_vnpay_payment
+    vnp.requestData['vnp_IpnUrl'] = settings.VNPAY_IPN_URL
+                                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WebGame\venv\games\Lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'VNPAY_IPN_URL'. Did you mean: 'VNPAY_API_URL'?
+[2025-09-05 16:39:02,350] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 16:39:03,872] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:39:15,527] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:39:21,477] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905163921&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23188&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A3000%2Fthanh-you&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=188&vnp_Version=2.1.0
+[2025-09-05 16:39:21,478] INFO root [VNPAY] hashValue: a91bdd4bbc9a790c745d6ef8a16c46f8ee869eb7fbd41cd2a20ac9904f65c72615bd8bf1e6fc5dd7eb9cb02fe34491ba11ab8297eab733a067ee7c2faaad7611
+[2025-09-05 16:39:21,478] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905163921&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23188&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A3000%2Fthanh-you&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=188&vnp_Version=2.1.0&vnp_SecureHash=a91bdd4bbc9a790c745d6ef8a16c46f8ee869eb7fbd41cd2a20ac9904f65c72615bd8bf1e6fc5dd7eb9cb02fe34491ba11ab8297eab733a067ee7c2faaad7611
+[2025-09-05 16:41:25,094] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 16:41:26,629] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:42:03,470] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:42:09,589] WARNING django.request Unauthorized: /orders/
+[2025-09-05 16:42:12,036] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 16:42:21,011] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905164220&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_IpnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Fipn%2F&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23189&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A3000%2Fthanh-you&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=189&vnp_Version=2.1.0
+[2025-09-05 16:42:21,011] INFO root [VNPAY] hashValue: 1bee868dc1903701e612d8887d57302ffa97bc3ff595b515b241908e8941e968e725f5f54d6657eaa56b5b583199ca3b9580561fee42259055df53ee3c47980c
+[2025-09-05 16:42:21,012] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905164220&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_IpnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Fipn%2F&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23189&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A3000%2Fthanh-you&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=189&vnp_Version=2.1.0&vnp_SecureHash=1bee868dc1903701e612d8887d57302ffa97bc3ff595b515b241908e8941e968e725f5f54d6657eaa56b5b583199ca3b9580561fee42259055df53ee3c47980c
+[2025-09-05 16:42:35,094] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 16:42:36,480] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:42:39,349] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905164239&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23190&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A3000%2Fthanh-you&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=190&vnp_Version=2.1.0
+[2025-09-05 16:42:39,350] INFO root [VNPAY] hashValue: 620fc60846bc073ede2f2aae74da4aef65946ac18cc786d734c481d8e96db5bbb04e480c6128b4dc4695fdd575d6979110bffbd83b00f290bfc13b75d7330853
+[2025-09-05 16:42:39,350] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905164239&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23190&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A3000%2Fthanh-you&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=190&vnp_Version=2.1.0&vnp_SecureHash=620fc60846bc073ede2f2aae74da4aef65946ac18cc786d734c481d8e96db5bbb04e480c6128b4dc4695fdd575d6979110bffbd83b00f290bfc13b75d7330853
+[2025-09-05 16:45:02,592] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:45:04,058] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:45:56,311] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:45:57,567] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:46:00,816] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:46:02,209] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:48:41,589] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 16:51:21,929] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 16:51:23,261] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:51:37,489] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 16:51:38,849] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:52:37,951] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:52:39,291] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:52:43,438] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:52:44,653] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:53:51,281] WARNING django.request Unauthorized: /orders/
+[2025-09-05 16:54:00,664] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905165400&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23191&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A8000%2Fvnpay-return&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=191&vnp_Version=2.1.0
+[2025-09-05 16:54:00,664] INFO root [VNPAY] hashValue: e100c173a46b6e6ffd2f3dbe8b395698afa2790b76cd023e599a19ac8e27dbc96f7a4edf3f7f646dceb33f9427ba21b92448b4f18136330745ae8b3906acc76b
+[2025-09-05 16:54:00,664] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905165400&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23191&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2Flocalhost%3A8000%2Fvnpay-return&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=191&vnp_Version=2.1.0&vnp_SecureHash=e100c173a46b6e6ffd2f3dbe8b395698afa2790b76cd023e599a19ac8e27dbc96f7a4edf3f7f646dceb33f9427ba21b92448b4f18136330745ae8b3906acc76b
+[2025-09-05 16:54:58,016] WARNING django.request Not Found: /vnpay-return
+[2025-09-05 16:54:58,178] WARNING django.request Not Found: /favicon.ico
+[2025-09-05 16:56:38,396] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:56:39,724] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:56:53,754] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 16:56:55,037] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 16:57:07,835] WARNING django.request Not Found: /vnpay-return
+[2025-09-05 17:04:24,747] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 17:04:26,061] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:04:31,562] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 17:04:32,924] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:04:36,210] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 17:04:37,420] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:04:41,725] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook_vnpay.py changed, reloading.
+[2025-09-05 17:04:43,028] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:04:57,287] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 17:04:58,655] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:05:06,275] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-05 17:05:07,552] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:05:21,793] INFO django.utils.autoreload E:\WebGame\games\webgames\vnpay.py changed, reloading.
+[2025-09-05 17:05:23,137] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:05:35,219] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 17:05:36,668] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:05:47,653] INFO django.utils.autoreload E:\WebGame\games\webgames\webhook_vnpay.py changed, reloading.
+[2025-09-05 17:05:49,038] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:05:57,742] WARNING django.request Not Found: /vnpay-return
+[2025-09-05 17:06:20,967] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:06:29,378] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905170629&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_IpnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Fipn%2F&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23192&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=192&vnp_Version=2.1.0
+[2025-09-05 17:06:29,378] INFO root [VNPAY] hashValue: 38fdead78a8d3d3ad22cc730ec9d3b990dd8fe798af8c13f6d8f94f50f25e02486525a386c46fd12dbe5406b8b222142ce6f5fe0e80ab99a4e602627b8023526
+[2025-09-05 17:06:29,379] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905170629&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_IpnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Fipn%2F&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23192&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=192&vnp_Version=2.1.0&vnp_SecureHash=38fdead78a8d3d3ad22cc730ec9d3b990dd8fe798af8c13f6d8f94f50f25e02486525a386c46fd12dbe5406b8b222142ce6f5fe0e80ab99a4e602627b8023526
+[2025-09-05 17:07:35,129] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 17:07:36,877] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:07:40,144] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-05 17:07:41,360] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 17:07:57,997] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905170757&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23193&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=193&vnp_Version=2.1.0
+[2025-09-05 17:07:57,998] INFO root [VNPAY] hashValue: 2af8baafb94f523b11ec95ad1e00e637a5716a3c4b703fcce703b01f05e039dac1424488cc1cb3a295ca37e61007de6bc03f3cdfe5531aabb3ddac632ca2ff04
+[2025-09-05 17:07:57,998] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905170757&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23193&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=193&vnp_Version=2.1.0&vnp_SecureHash=2af8baafb94f523b11ec95ad1e00e637a5716a3c4b703fcce703b01f05e039dac1424488cc1cb3a295ca37e61007de6bc03f3cdfe5531aabb3ddac632ca2ff04
+[2025-09-05 17:08:28,244] INFO root Validate debug:
+HashData: vnp_Amount=18000000&vnp_BankCode=NCB&vnp_BankTranNo=VNP15159824&vnp_CardType=ATM&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23193&vnp_PayDate=20250905170944&vnp_ResponseCode=00&vnp_TmnCode=M0V8RBA7&vnp_TransactionNo=15159824&vnp_TransactionStatus=00&vnp_TxnRef=193
+HashValue: d6428ac901e705b087e1ede08a6b56940b06074ed01d4f8ee6dbb7a89cd0528a3a7ed4b5309150a604c10e55c637cf9945468e972ec08756fced01b1e2f2db0c
+InputHash: d6428ac901e705b087e1ede08a6b56940b06074ed01d4f8ee6dbb7a89cd0528a3a7ed4b5309150a604c10e55c637cf9945468e972ec08756fced01b1e2f2db0c
+[2025-09-05 17:10:29,847] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905171029&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23194&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=194&vnp_Version=2.1.0
+[2025-09-05 17:10:29,848] INFO root [VNPAY] hashValue: d2955f3bfff1882d952eff6c9309b840d0fd471520dbc9c3a408b4f0f367305fab3eaf8a6ed50d5ca5b19a2b83abb6cf9065e066cc2bbad66c466fad74fecd58
+[2025-09-05 17:10:29,848] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905171029&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23194&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=194&vnp_Version=2.1.0&vnp_SecureHash=d2955f3bfff1882d952eff6c9309b840d0fd471520dbc9c3a408b4f0f367305fab3eaf8a6ed50d5ca5b19a2b83abb6cf9065e066cc2bbad66c466fad74fecd58
+[2025-09-05 17:11:03,148] INFO root Validate debug:
+HashData: vnp_Amount=18000000&vnp_BankCode=NCB&vnp_BankTranNo=VNP15159825&vnp_CardType=ATM&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23194&vnp_PayDate=20250905171219&vnp_ResponseCode=00&vnp_TmnCode=M0V8RBA7&vnp_TransactionNo=15159825&vnp_TransactionStatus=00&vnp_TxnRef=194
+HashValue: b3f064c907b9b3496bb4313d77f8331208276f520911c9c2391a4a6296e6431af48c9bbd9e635ae71c7bf2feaabb5162852408fe51ecc0acbd8898bfb45d0ab3
+InputHash: b3f064c907b9b3496bb4313d77f8331208276f520911c9c2391a4a6296e6431af48c9bbd9e635ae71c7bf2feaabb5162852408fe51ecc0acbd8898bfb45d0ab3
+[2025-09-05 17:21:12,508] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:14,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:14,527] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:16,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:16,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:18,531] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:18,532] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:20,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:20,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:22,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:22,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:24,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:24,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:26,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:26,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:28,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:28,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:30,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:30,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:32,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:32,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:34,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:34,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:36,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:36,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:38,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:38,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:40,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:40,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:42,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:42,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:44,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:44,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:46,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:46,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:48,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:48,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:50,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:50,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:52,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:52,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:54,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:54,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:56,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:56,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:21:58,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:21:58,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:00,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:00,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:02,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:02,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:04,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:04,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:06,538] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:06,539] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:08,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:08,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:10,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:10,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:12,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:12,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:14,543] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:14,545] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:16,539] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:16,540] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:18,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:18,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:20,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:20,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:22,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:22,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:24,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:24,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:26,525] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:26,526] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:28,544] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:28,545] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:30,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:30,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:32,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:32,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:34,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:34,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:36,538] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:36,539] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:38,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:38,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:40,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:40,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:42,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:42,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:44,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:44,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:46,533] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:46,534] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:48,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:48,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:50,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:50,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:52,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:52,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:54,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:54,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:56,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:56,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:22:58,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:22:58,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:00,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:00,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:02,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:02,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:04,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:04,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:06,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:06,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:08,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:08,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:10,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:10,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:12,531] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:12,533] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:14,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:14,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:16,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:16,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:18,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:18,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:20,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:20,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:22,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:22,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:24,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:24,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:26,525] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:26,527] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:28,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:28,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:30,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:30,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:32,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:32,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:34,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:34,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:36,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:36,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:38,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:38,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:40,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:40,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:42,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:42,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:44,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:44,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:46,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:46,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:48,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:48,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:50,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:50,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:52,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:52,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:54,531] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:54,532] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:56,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:56,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:23:58,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:23:58,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:00,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:00,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:02,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:02,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:04,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:04,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:06,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:06,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:08,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:08,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:10,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:10,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:12,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:12,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:14,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:14,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:16,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:16,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:18,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:18,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:20,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:20,532] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:22,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:22,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:24,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:24,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:26,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:26,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:28,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:28,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:30,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:30,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:32,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:32,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:34,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:34,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:36,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:36,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:38,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:38,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:40,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:40,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:42,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:42,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:44,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:44,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:46,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:46,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:48,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:48,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:50,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:50,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:52,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:52,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:54,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:54,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:56,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:56,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:24:58,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:24:58,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:00,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:00,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:02,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:02,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:04,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:04,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:06,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:06,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:08,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:08,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:10,520] WARNING django.request Unauthorized: /games/5/download/
+[2025-09-05 17:25:10,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:10,548] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:12,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:12,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:14,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:14,527] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:16,524] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:16,525] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:18,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:18,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:20,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:20,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:22,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:22,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:24,537] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:24,538] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:26,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:26,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:28,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:28,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:28,930] WARNING django.request Unauthorized: /carts/add_item/
+[2025-09-05 17:25:32,736] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:32,738] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:33,545] WARNING django.request Unauthorized: /carts/add_item/
+[2025-09-05 17:25:41,078] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:41,079] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:42,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:42,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:44,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:44,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:46,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:46,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:48,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:48,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:50,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:50,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:52,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:52,532] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:54,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:54,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:56,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:56,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:25:58,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:25:58,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:00,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:00,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:02,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:02,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:04,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:04,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:06,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:06,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:08,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:08,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:10,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:10,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:12,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:12,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:14,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:14,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:16,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:16,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:18,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:18,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:20,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:20,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:22,540] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:22,541] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:24,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:24,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:26,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:26,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:28,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:28,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:30,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:30,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:32,533] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:32,535] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:34,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:34,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:36,532] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:36,534] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:38,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:38,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:40,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:40,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:42,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:42,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:44,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:44,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:46,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:46,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:48,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:48,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:50,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:50,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:52,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:52,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:54,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:54,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:56,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:56,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:26:58,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:26:58,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:00,525] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:00,526] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:02,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:02,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:04,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:04,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:06,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:06,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:08,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:08,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:10,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:10,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:12,526] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:12,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:14,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:14,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:16,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:16,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:18,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:18,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:20,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:20,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:22,538] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:22,539] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:24,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:24,532] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:26,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:26,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:28,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:28,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:30,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:30,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:32,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:32,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:34,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:34,531] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:36,527] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:36,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:38,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:38,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:40,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:40,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:42,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:42,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:44,530] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:44,532] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:46,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:46,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:48,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:48,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:50,529] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:50,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:52,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:52,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:54,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:54,528] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:56,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:56,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:27:58,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:27:58,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:00,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:00,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:02,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:02,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:04,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:04,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:06,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:06,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:08,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:08,530] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:10,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:10,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:12,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:12,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:14,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:14,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:16,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:16,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:18,528] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:18,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:20,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:20,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:22,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:22,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:25,189] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:25,190] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:27,188] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:27,189] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:29,183] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:29,185] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:31,184] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:31,186] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:33,184] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:33,186] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:35,184] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:35,186] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:37,184] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:37,186] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:39,193] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:39,194] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:41,190] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:41,191] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:43,196] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:43,197] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:45,189] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:45,190] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:47,189] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:47,190] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:49,187] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:49,188] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:51,183] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:51,185] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:53,188] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:53,189] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:55,184] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:55,185] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:57,184] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:57,185] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:28:59,188] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:28:59,190] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:29:01,188] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:01,190] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:29:03,192] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:03,193] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:29:05,188] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:05,189] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:29:06,527] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:06,529] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:29:07,422] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:09,425] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:09,426] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:29:11,436] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:29:11,437] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:20,502] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:20,508] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:23,190] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:23,191] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:25,198] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:25,199] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:27,194] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:27,195] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:29,189] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:29,191] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:31,186] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:31,187] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:33,185] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:33,186] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:31:37,192] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:52,190] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:31:52,192] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:33:07,511] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-05 17:33:10,367] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-05 17:35:41,373] WARNING django.request Forbidden: /games/2/download/
+[2025-09-05 17:39:03,765] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:39:03,767] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:41:41,117] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:41:41,119] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:49:20,520] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:49:20,522] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:49:28,540] WARNING django.request Unauthorized: /stats/revenue/
+[2025-09-05 17:49:33,038] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:49:33,039] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:51:48,811] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:51:48,813] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:57:05,354] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:57:05,356] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:57:05,360] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:57:05,361] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 17:57:08,112] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 17:57:08,118] WARNING django.request Unauthorized: /stats/revenue/
+[2025-09-05 18:09:02,738] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 18:09:02,740] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 19:38:11,297] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-05 19:39:11,835] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 19:39:30,998] WARNING django.request Forbidden: /games/2/download/
+[2025-09-05 19:48:50,408] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 19:48:55,354] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 19:49:04,739] WARNING django.request Unauthorized: /games/4/download/
+[2025-09-05 19:49:12,573] WARNING django.request Unauthorized: /reviews/create_review/
+[2025-09-05 19:49:14,974] WARNING django.request Unauthorized: /reviews/create_review/
+[2025-09-05 19:50:43,545] INFO root [VNPAY] queryString: vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905195043&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23195&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=195&vnp_Version=2.1.0
+[2025-09-05 19:50:43,546] INFO root [VNPAY] hashValue: db5599bbe34bbc2f7670cd93d91dbbf90e0d8f2d77fb723f3c8006086e3cf30094ec0f9deabe3247fe93c594a3981660c2426fb714f0834f1d6dfee4b58ef2d4
+[2025-09-05 19:50:43,546] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=18000000&vnp_Command=pay&vnp_CreateDate=20250905195043&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23195&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=195&vnp_Version=2.1.0&vnp_SecureHash=db5599bbe34bbc2f7670cd93d91dbbf90e0d8f2d77fb723f3c8006086e3cf30094ec0f9deabe3247fe93c594a3981660c2426fb714f0834f1d6dfee4b58ef2d4
+[2025-09-05 19:50:59,150] WARNING django.request Forbidden: /games/4/download/
+[2025-09-05 19:55:37,212] WARNING django.request Not Found: /favicon.ico
+[2025-09-05 19:56:49,070] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 19:56:51,233] WARNING django.request Unauthorized: /stats/revenue/
+[2025-09-05 19:56:52,175] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 19:56:53,465] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 19:56:53,469] WARNING django.request Unauthorized: /carts/items/
+[2025-09-05 19:56:53,472] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:04:06,692] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:06:54,505] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:06:55,268] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:07:13,469] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:10:40,085] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:10:41,102] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:10:41,594] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:13:22,982] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:18:35,751] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:25:05,895] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:28:37,594] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:36:42,174] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:39:04,333] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:40:12,517] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:41:50,168] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:44:17,386] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-05 20:44:29,614] WARNING django.request Unauthorized: /users/current_user/
