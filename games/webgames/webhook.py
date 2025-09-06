@@ -55,7 +55,7 @@ def momo_webhook_view(request):
 
             return Response({"message": "Invalid signature"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # B4: Xử lý orderId -> chính là transaction_id bạn đã lưu
+
         order_id = data.get("orderId")
         result_code = data.get("resultCode")
 
