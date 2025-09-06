@@ -1504,3 +1504,82 @@ InputHash: b3f064c907b9b3496bb4313d77f8331208276f520911c9c2391a4a6296e6431af48c9
 [2025-09-05 20:41:50,168] WARNING django.request Unauthorized: /users/current_user/
 [2025-09-05 20:44:17,386] WARNING django.request Unauthorized: /users/current_user/
 [2025-09-05 20:44:29,614] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 00:41:16,386] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 01:00:21,206] INFO django.utils.autoreload E:\WebGame\games\webgames\momo.py changed, reloading.
+[2025-09-07 01:00:22,752] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 01:45:52,164] INFO django.utils.autoreload E:\WebGame\games\webgames\momo.py changed, reloading.
+[2025-09-07 01:45:54,259] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 01:46:30,835] INFO django.utils.autoreload E:\WebGame\games\webgames\momo.py changed, reloading.
+[2025-09-07 01:46:32,492] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:02:53,390] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-07 02:02:54,822] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:10:21,222] INFO django.utils.autoreload E:\WebGame\games\Web\settings.py changed, reloading.
+[2025-09-07 02:10:22,751] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:10:37,595] WARNING django.request Unauthorized: /carts/add_item/
+[2025-09-07 02:10:40,656] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:11:00,768] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:17:45,351] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:19:25,486] WARNING django.request Unauthorized: /carts/add_item/
+[2025-09-07 02:19:26,967] WARNING django.request Unauthorized: /carts/add_item/
+[2025-09-07 02:20:14,847] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:20:17,152] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:20:59,935] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:21:16,794] INFO root [VNPAY] queryString: vnp_Amount=2000000&vnp_Command=pay&vnp_CreateDate=20250907022116&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23196&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=196&vnp_Version=2.1.0
+[2025-09-07 02:21:16,794] INFO root [VNPAY] hashValue: 3b97ab875711d25d2557dbbd1c45d2830befa52f696c674b70c37d74e975d5e0fe1f5d50bc38d07d1a7ee22b657537481909270f96c528a389d217faa07c9314
+[2025-09-07 02:21:16,794] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=2000000&vnp_Command=pay&vnp_CreateDate=20250907022116&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23196&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=196&vnp_Version=2.1.0&vnp_SecureHash=3b97ab875711d25d2557dbbd1c45d2830befa52f696c674b70c37d74e975d5e0fe1f5d50bc38d07d1a7ee22b657537481909270f96c528a389d217faa07c9314
+[2025-09-07 02:21:20,151] INFO webgames.momo [MoMo] Initiating payment: {"partnerCode": "MOMO", "partnerName": "WebGame", "storeId": "WebGame", "requestId": "44e2991f-0df6-41e7-a8b3-e460a156ca7c", "amount": 20000, "orderId": "ORDER_197_44e2991f", "orderInfo": "Thanh to\u00e1n \u0111\u01a1n h\u00e0ng #197", "redirectUrl": "http://localhost:3000/thank-you", "ipnUrl": " http://localhost:3000/momo/webhook/", "lang": "vi", "extraData": "", "requestType": "captureWallet", "signature": "db2596070ffc8d6061f152f066bc324cfbcfefd307026f77b5761d8d0018a6ef"}
+[2025-09-07 02:23:38,350] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-07 02:23:39,953] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:23:46,946] INFO webgames.momo [MoMo] Initiating payment: {"partnerCode": "MOMO", "partnerName": "WebGame", "storeId": "WebGame", "requestId": "246a0751-3a62-43da-aa20-d6ee5d337a50", "amount": 20000, "orderId": "ORDER_198_246a0751", "orderInfo": "Thanh to\u00e1n \u0111\u01a1n h\u00e0ng #198", "redirectUrl": "http://localhost:3000/thank-you", "ipnUrl": "http://localhost:3000/momo/webhook/", "lang": "vi", "extraData": "", "requestType": "captureWallet", "signature": "6902f2fd72212e2bf426bc51bf574a49c27d5f09b85fe5976d195802b2e784bb"}
+[2025-09-07 02:25:08,881] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-07 02:25:10,241] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:25:12,827] WARNING django.request Unauthorized: /carts/items/
+[2025-09-07 02:25:15,845] WARNING django.request Unauthorized: /carts/items/
+[2025-09-07 02:25:15,846] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:25:24,326] INFO webgames.momo [MoMo] Initiating payment: {"partnerCode": "MOMO", "partnerName": "WebGame", "storeId": "WebGame", "requestId": "172f5b63-866e-4e58-ad41-4ddd7bd82f7d", "amount": 20000, "orderId": "ORDER_199_172f5b63", "orderInfo": "Thanh to\u00e1n \u0111\u01a1n h\u00e0ng #199", "redirectUrl": "http://localhost:3000/thank-you", "ipnUrl": "http://127.0.0.1:8000/momo/webhook/", "lang": "vi", "extraData": "", "requestType": "captureWallet", "signature": "a7ce57fd3c36f604cd170218b5cc618e46d0803b9a22297d0a1845c9872eec29"}
+[2025-09-07 02:29:13,286] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-07 02:29:14,725] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:29:16,592] INFO root [VNPAY] queryString: vnp_Amount=2000000&vnp_Command=pay&vnp_CreateDate=20250907022916&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23200&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=200&vnp_Version=2.1.0
+[2025-09-07 02:29:16,594] INFO root [VNPAY] hashValue: a04b0451d28b1429fcbb08354dadc30e27802235e33b8fcce317f9ac67cbc635da6ab92d263acb28842f1065e3440e85410922ebcf38a1d4841b3a04fc27a719
+[2025-09-07 02:29:16,595] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=2000000&vnp_Command=pay&vnp_CreateDate=20250907022916&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23200&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=200&vnp_Version=2.1.0&vnp_SecureHash=a04b0451d28b1429fcbb08354dadc30e27802235e33b8fcce317f9ac67cbc635da6ab92d263acb28842f1065e3440e85410922ebcf38a1d4841b3a04fc27a719
+[2025-09-07 02:29:18,404] INFO webgames.momo [MoMo] Initiating payment: {"partnerCode": "MOMO", "partnerName": "WebGame", "storeId": "WebGame", "requestId": "e762a496-33c1-4673-8585-431e5fd4fc99", "amount": 20000, "orderId": "ORDER_201_e762a496", "orderInfo": "Thanh to\u00e1n \u0111\u01a1n h\u00e0ng #201", "redirectUrl": "http://localhost:3000/thank-you", "ipnUrl": "https://5fc38f2bbda3.ngrok-free.app/momo/webhook/", "lang": "vi", "extraData": "", "requestType": "captureWallet", "signature": "ad9e32ac68f5dcce409a4f1fca31ffe90511d9850fafd4e2cda60969a0276e35"}
+[2025-09-07 02:30:22,052] WARNING django.request Unauthorized: /carts/items/
+[2025-09-07 02:30:22,052] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:30:23,411] WARNING django.request Unauthorized: /carts/items/
+[2025-09-07 02:30:23,414] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:39:21,658] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:46:40,018] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:50:14,816] INFO django.utils.autoreload E:\WebGame\games\webgames\views.py changed, reloading.
+[2025-09-07 02:50:16,562] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-09-07 02:52:55,175] WARNING django.request Unauthorized: /games/1/download/
+[2025-09-07 02:52:59,066] WARNING django.request Unauthorized: /games/3/download/
+[2025-09-07 02:53:13,648] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:53:27,627] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:54:47,955] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:55:05,496] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:55:13,356] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:55:24,268] INFO webgames.momo [MoMo] Initiating payment: {"partnerCode": "MOMO", "partnerName": "WebGame", "storeId": "WebGame", "requestId": "362d7dee-6b03-4aa7-8ee3-63a9fe93f8f5", "amount": 4000000, "orderId": "ORDER_202_362d7dee", "orderInfo": "Thanh to\u00e1n \u0111\u01a1n h\u00e0ng #202", "redirectUrl": "http://localhost:3000/thank-you", "ipnUrl": "https://5fc38f2bbda3.ngrok-free.app/momo/webhook/", "lang": "vi", "extraData": "", "requestType": "captureWallet", "signature": "a96b86bba4b254d1e187f6126efb7fbe85d4ebcd7bbc58b4c06d60840d9141e5"}
+[2025-09-07 02:55:54,797] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:55:58,993] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:56:00,187] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:56:20,353] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:56:53,874] WARNING django.request Forbidden: /games/2/download/
+[2025-09-07 02:57:00,782] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:57:03,841] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:57:05,639] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:57:06,781] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:57:08,161] WARNING django.request Bad Request: /carts/add_item/
+[2025-09-07 02:57:14,293] INFO root [VNPAY] queryString: vnp_Amount=400000000&vnp_Command=pay&vnp_CreateDate=20250907025714&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23203&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=203&vnp_Version=2.1.0
+[2025-09-07 02:57:14,293] INFO root [VNPAY] hashValue: cab5aee078589818626a7ea5d345836088e858590a716da9e585938aaed3b71e69565145b87e5994eb7625655af821410c2451a59a1c15a5a461ea11b14a3dcc
+[2025-09-07 02:57:14,293] INFO webgames.views [VNPAY] Payment URL generated: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=400000000&vnp_Command=pay&vnp_CreateDate=20250907025714&vnp_CurrCode=VND&vnp_IpAddr=127.0.0.1&vnp_Locale=vn&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23203&vnp_OrderType=billpayment&vnp_ReturnUrl=http%3A%2F%2F127.0.0.1%3A8000%2Fapi%2Fvnpay%2Freturn%2F&vnp_TmnCode=M0V8RBA7&vnp_TxnRef=203&vnp_Version=2.1.0&vnp_SecureHash=cab5aee078589818626a7ea5d345836088e858590a716da9e585938aaed3b71e69565145b87e5994eb7625655af821410c2451a59a1c15a5a461ea11b14a3dcc
+[2025-09-07 02:57:53,640] INFO root Validate debug:
+HashData: vnp_Amount=400000000&vnp_BankCode=NCB&vnp_BankTranNo=VNP15160717&vnp_CardType=ATM&vnp_OrderInfo=Thanh+to%C3%A1n+%C4%91%C6%A1n+h%C3%A0ng+%23203&vnp_PayDate=20250907025910&vnp_ResponseCode=00&vnp_TmnCode=M0V8RBA7&vnp_TransactionNo=15160717&vnp_TransactionStatus=00&vnp_TxnRef=203
+HashValue: d8b4b01ab33974ae7f1938e214dbc9ebb3f4cb8fb552b51523af64a8e157d56154b60b9be8e3a2007252cb34e8115ba8b0bf89d8ad61010a41536d5f934ba2f9
+InputHash: d8b4b01ab33974ae7f1938e214dbc9ebb3f4cb8fb552b51523af64a8e157d56154b60b9be8e3a2007252cb34e8115ba8b0bf89d8ad61010a41536d5f934ba2f9
+[2025-09-07 02:58:39,023] WARNING django.request Unauthorized: /games/2/download/
+[2025-09-07 02:58:45,015] WARNING django.request Unauthorized: /games/2/download/
+[2025-09-07 02:58:53,017] WARNING django.request Unauthorized: /games/2/download/
+[2025-09-07 02:59:01,020] WARNING django.request Unauthorized: /games/2/download/
+[2025-09-07 02:59:18,889] WARNING django.request Unauthorized: /games/2/download/
+[2025-09-07 02:59:18,895] WARNING django.request Unauthorized: /users/current_user/
+[2025-09-07 02:59:26,246] WARNING django.request Bad Request: /carts/add_item/

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { createOrder, createMomoPayment } from '../../configs/Api';
-import { clearCartItems } from '../../utils/cartUtils';
+import { createOrder, createMomoPayment, clearCart } from '../../configs/Api';
 
 function CheckoutPage() {
   const navigate = useNavigate();
@@ -33,8 +32,8 @@ function CheckoutPage() {
         const payRes = await createMomoPayment(orderId);
         const payUrl = payRes?.data?.payUrl;
         if (!payUrl) throw new Error('Không nhận được payUrl');
-        // làm sạch giỏ hàng với các id này
-        clearCartItems(ids);
+        // Xóa giỏ hàng database sau khi tạo đơn thành công
+        await clearCart();
         window.location.href = payUrl;
       } catch (e) {
         const status = e?.response?.status;

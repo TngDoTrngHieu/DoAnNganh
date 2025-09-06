@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCartItems, removeFromCart, createOrder, createMomoPayment, createVnpayPayment } from "../../configs/Api";
+import { getCartItems, removeFromCart, createOrder, createMomoPayment, createVnpayPayment, clearCart } from "../../configs/Api";
 
 function CartPage() {
 
@@ -41,6 +41,9 @@ function CartPage() {
       const orderRes = await createOrder(ids);
       const orderId = orderRes.data.id;
       const payRes = await createMomoPayment(orderId);
+      // Xóa giỏ hàng database sau khi tạo đơn thành công
+      await clearCart();
+      setCartItems([]);
       window.location.href = payRes.data.payUrl;
     } catch (e) {
       console.error('MoMo payment error:', e);
@@ -56,6 +59,9 @@ function CartPage() {
       const orderRes = await createOrder(ids);
       const orderId = orderRes.data.id;
       const payRes = await createVnpayPayment(orderId);
+      // Xóa giỏ hàng database sau khi tạo đơn thành công
+      await clearCart();
+      setCartItems([]);
       window.location.href = payRes.data.payment_url;
     } catch (e) {
       console.error('VNPAY payment error:', e);
