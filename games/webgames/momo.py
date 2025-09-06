@@ -20,11 +20,7 @@ TEST_SECRET_KEY = 'K951B6PE1waDMi640xX08PD3vg6EkVlz'
 
 
 def initiate_momo_payment(*, amount: int, order_info: str, redirect_url: str, ipn_url: str, momo_request_id: str, momo_order_id: str) -> dict:
-    """
-    Helper to create a payment request to MoMo API. Returns raw response JSON.
 
-    Parameters are explicitly named to avoid mistakes.
-    """
     partner_code = TEST_PARTNER_CODE
     access_key = TEST_ACCESS_KEY
     secret_key = TEST_SECRET_KEY
@@ -71,9 +67,6 @@ def initiate_momo_payment(*, amount: int, order_info: str, redirect_url: str, ip
         timeout=10
     )
 
-    logger.info(f"[MoMo] Response status: {response.status_code}")
-    logger.info(f"[MoMo] Response body: {response.text}")
-
     if response.status_code != 200:
         raise requests.HTTPError(f"MoMo API error: {response.status_code} - {response.text}")
 
@@ -103,7 +96,6 @@ def create_momo_payment(request):
             if not ipn_url: missing_fields.append('ipn_url')
             if not order_id: missing_fields.append('orderId')
 
-
             return Response(
                 {"error": f"Missing required parameters: {', '.join(missing_fields)}"},
                 status=status.HTTP_400_BAD_REQUEST
@@ -122,8 +114,6 @@ def create_momo_payment(request):
         partner_code = TEST_PARTNER_CODE
         access_key = TEST_ACCESS_KEY
         secret_key = TEST_SECRET_KEY
-
- 
 
         # Generate request ID
         request_id = str(uuid.uuid4())
@@ -161,7 +151,6 @@ def create_momo_payment(request):
             'signature': signature
         }
 
-
         # Make request to MoMo API
         response = requests.post(
             "https://test-payment.momo.vn/v2/gateway/api/create",
@@ -171,18 +160,14 @@ def create_momo_payment(request):
         )
 
 
-
-
         if response.status_code != 200:
             error_msg = f"MoMo API error: {response.status_code} - {response.text}"
-            logger.error(error_msg)
             return Response(
                 {"error": "Failed to create payment", "details": error_msg},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         response_data = response.json()
-
 
         # Create or update payment record
         payment, created = Payment.objects.get_or_create(

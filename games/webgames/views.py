@@ -105,7 +105,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 amount=amount,
                 order_info=f"Thanh toán đơn hàng #{order.id}",
                 redirect_url="http://localhost:3000/thank-you",
-                ipn_url=" https://5e80becd1be2.ngrok-free.app/momo/webhook/",
+                ipn_url="https://5fc38f2bbda3.ngrok-free.app/momo/webhook/",
                 momo_request_id=momo_request_id,
                 momo_order_id=momo_order_id
             )
@@ -265,7 +265,7 @@ class GameViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIVi
         # Kiểm tra đã mua game chưa
         purchased = OrderItem.objects.filter(
             order__customer=account,
-            order__status__in=['CONFIRMED', 'COMPLETED'],
+            order__status__in=[ 'COMPLETED'],
             game=game
         ).exists()
 

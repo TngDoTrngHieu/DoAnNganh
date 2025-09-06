@@ -1,7 +1,16 @@
-import React from 'react';
+
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../User/AuthContext';
 
 function ThankYouPage() {
+  const { refreshCart } = useContext(AuthContext);
+
+  useEffect(() => {
+    // Refresh giỏ hàng khi quay lại từ thanh toán
+    refreshCart();
+  }, [refreshCart]);
+
   return (
     <div className="container py-5 text-center">
       <h2>Cảm ơn bạn đã thanh toán!</h2>
