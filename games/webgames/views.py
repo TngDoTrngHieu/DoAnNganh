@@ -105,7 +105,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 amount=amount,
                 order_info=f"Thanh toán đơn hàng #{order.id}",
                 redirect_url="http://localhost:3000/thank-you",
-                ipn_url="https://5fc38f2bbda3.ngrok-free.app/momo/webhook/",
+                ipn_url="https://new-sadly-shepherd.ngrok-free.app/momo/webhook/",
                 momo_request_id=momo_request_id,
                 momo_order_id=momo_order_id
             )

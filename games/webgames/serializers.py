@@ -85,7 +85,7 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = [
             'id', 'title', 'description', 'price', 'categories', 'image', 'file',
-            'tags', 'view_count', 'purchase_count', 'developer', 'created_at', 'update_at'
+            'tags', 'developer', 'created_at', 'update_at'
         ]
 
     def get_image(self, obj):
@@ -115,7 +115,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = [
-            'id', 'status', 'payment_method', 'note', 'items', 'total_amount', 'created_at', 'update_at'
+            'id', 'status', 'payment_method', 'items', 'total_amount', 'created_at', 'update_at'
         ]
         read_only_fields = ['id', 'items', 'total_amount', 'created_at', 'update_at']
 

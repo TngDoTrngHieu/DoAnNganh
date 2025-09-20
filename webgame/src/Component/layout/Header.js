@@ -133,17 +133,6 @@ function Header() {
                   )}
                 </ul>
               </li>
-              {user && (
-                <li className="nav-item">
-                  <NavLink 
-                    to="/stats" 
-                    end 
-                    className={({ isActive }) => `nav-link text-light ${isActive ? 'active' : ''}`}
-                  >
-                    Thống kê
-                  </NavLink>
-                </li>
-              )}
             </ul>
 
             {/* Search Form */}

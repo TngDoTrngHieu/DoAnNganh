@@ -62,8 +62,6 @@ class Game(BaseModel):
         blank=True
     )
     tags = models.ManyToManyField(Tag, related_name="games")
-    view_count = models.PositiveIntegerField(default=0)
-    purchase_count = models.PositiveIntegerField(default=0)
     developer = models.ForeignKey('Developer', on_delete=models.SET_NULL, null=True, blank=True, related_name='games')
 
     def __str__(self):
@@ -83,7 +81,6 @@ class Order(BaseModel):
     customer = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
     payment_method = models.CharField(max_length=10, choices=PaymentMethod.choices, default=PaymentMethod.MOMO)
-    note = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"Order #{self.id} - {self.customer}"
@@ -149,9 +146,8 @@ class Developer(BaseModel):
         return self.name
 
 
-class Cart(models.Model):
+class Cart(BaseModel):
     customer = models.OneToOneField('Account', on_delete=models.CASCADE, related_name='cart')
-    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Cart of {self.customer.user.username}"

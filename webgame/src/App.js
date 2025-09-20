@@ -12,7 +12,7 @@ import CartPage from './Component/Home/CartPage';
 import CheckoutPage from './Component/Home/CheckoutPage';
 import ThankYouPage from './Component/Home/ThankYouPage';
 import { AuthProvider } from './Component/User/AuthContext';
-import ChartPage from './Component/Home/ChartPage';
+
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
-            <Route path="/stats" element={<ChartPage />} />
+ 
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
