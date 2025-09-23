@@ -26,5 +26,4 @@ urlpatterns = [
     path('momo/webhook/', momo_webhook_view, name='momo-webhook'),
     path("api/vnpay/return/", vnpay_return, name="vnpay_return"),
     path("api/vnpay/ipn/", vnpay_ipn, name="vnpay_ipn"),
-    path("stats/revenue/", RevenueStatsView.as_view(), name="revenue-stats"),
 ]

@@ -18,7 +18,6 @@ def vnpay_ipn(request):
         payment = Payment.objects.filter(order_id=txn_ref).first()
         if not payment:
             return Response({"RspCode": "01", "Message": "Order not found"})
-
         if rsp_code == '00':
             payment.status = Payment.Status.COMPLETED
             if payment.order:
@@ -26,6 +25,8 @@ def vnpay_ipn(request):
                 payment.order.save(update_fields=["status"]) 
         else:
             payment.status = Payment.Status.FAILED
+            payment.order.status = payment.order.Status.CANCELLED
+            payment.order.save(update_fields=["status"])
         payment.save(update_fields=["status"]) 
         return Response({"RspCode": "00", "Message": "Confirm Success"})
     return Response({"RspCode": "97", "Message": "Invalid Signature"})
