@@ -17,13 +17,13 @@ function HomePage() {
   const navigate = useNavigate();
   const { setCartCount } = useContext(AuthContext);
 
-  // Load tags và categories
+
   useEffect(() => {
     getTags().then(res => setTags(res.data)).catch(() => setTags([]));
     getCategories().then(res => setCategories(res.data)).catch(() => setCategories([]));
   }, []);
 
-  // Load games khi searchParams thay đổi
+
   useEffect(() => {
     const qParam = searchParams.get('q') || '';
     const tagParam = searchParams.get('tag_id') || '';
@@ -78,7 +78,7 @@ function HomePage() {
   const handleFilter = (e) => {
     e.preventDefault();
     const params = {};
-    if (q) params.q = q;  // Tên game vẫn được filter từ Header.js
+    if (q) params.q = q;  
     if (selectedTag) params.tag_id = selectedTag;
     if (selectedCategory) params.category_id = selectedCategory;
     if (priceMin) params.price_min = priceMin;
@@ -92,7 +92,7 @@ function HomePage() {
     <div style={{ background: '#171a21', color: '#c7d5e0', minHeight: '100%' }}>
       <div className="container my-4">
 
-        {/* FILTER BAR */}
+
         <form onSubmit={handleFilter} className="mb-4 p-3 rounded" style={{ background: '#1b2838' }}>
           <div className="row g-2">
             <div className="col-md-3">

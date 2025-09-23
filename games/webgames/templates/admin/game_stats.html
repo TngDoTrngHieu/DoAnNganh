@@ -1,0 +1,225 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Thống kê Game</h1>
+
+<div style="margin-bottom: 20px;">
+    <label for="timeSelect">Hiển thị theo: </label>
+    <select id="timeSelect" onchange="updateChart()">
+        <option value="month">Tháng</option>
+        <option value="quarter">Quý</option>
+        <option value="year">Năm</option>
+    </select>
+    
+    <label for="yearSelect" style="margin-left: 20px;">Chọn năm: </label>
+    <select id="yearSelect" onchange="updateChart()">
+        <option value="">Tất cả các năm</option>
+        {% for year in available_years %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="monthSelect" style="margin-left: 20px;">Chọn tháng: </label>
+    <select id="monthSelect" onchange="updateChart()">
+        <option value="">Tất cả các tháng</option>
+        <option value="1">Tháng 1</option>
+        <option value="2">Tháng 2</option>
+        <option value="3">Tháng 3</option>
+        <option value="4">Tháng 4</option>
+        <option value="5">Tháng 5</option>
+        <option value="6">Tháng 6</option>
+        <option value="7">Tháng 7</option>
+        <option value="8">Tháng 8</option>
+        <option value="9">Tháng 9</option>
+        <option value="10">Tháng 10</option>
+        <option value="11">Tháng 11</option>
+        <option value="12">Tháng 12</option>
+    </select>
+</div>
+
+<button onclick="downloadChart('revenueChart', 'revenue.png')">Tải Doanh Thu</button>
+<button onclick="downloadChart('categoryChart', 'category.png')">Tải Theo Category</button>
+<button onclick="downloadChart('tagChart', 'tag.png')">Tải Theo Tag</button>
+
+<canvas id="revenueChart" style="max-width: 800px; margin-bottom:50px;"></canvas>
+<canvas id="categoryChart" style="max-width: 800px; margin-bottom:50px;"></canvas>
+<canvas id="tagChart" style="max-width: 800px; margin-bottom:50px;"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Dữ liệu từ server
+const allRevenueData = [
+    {% for r in revenue_total %}
+    {"year": {{ r.year }}, "month": {{ r.month }}, "total": {{ r.total }}},
+    {% endfor %}
+];
+
+const allQuarterData = [
+    {% for q in revenue_by_quarter %}
+    {"year": {{ q.year }}, "quarter": {{ q.quarter }}, "total": {{ q.total }}},
+    {% endfor %}
+];
+
+let revenueChart;
+
+function downloadChart(canvasId, filename) {
+    const canvas = document.getElementById(canvasId);
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = filename;
+    link.click();
+}
+
+function updateChart() {
+    const timeType = document.getElementById('timeSelect').value;
+    const selectedYear = document.getElementById('yearSelect').value;
+    const selectedMonth = document.getElementById('monthSelect').value;
+    
+    let data, labels, chartLabel;
+    
+    if (timeType === 'month') {
+        // Dữ liệu theo tháng
+        data = allRevenueData;
+        
+        // Lọc theo năm
+        if (selectedYear) {
+            data = data.filter(item => item.year == selectedYear);
+        }
+        
+        // Lọc theo tháng nếu được chọn
+        if (selectedMonth) {
+            data = data.filter(item => item.month == selectedMonth);
+        }
+        
+        // Nếu chọn tháng cụ thể, hiển thị theo năm
+        if (selectedMonth && !selectedYear) {
+            labels = data.map(item => `Năm ${item.year}`);
+            chartLabel = `Doanh thu tháng ${selectedMonth} theo năm`;
+        } else if (selectedMonth && selectedYear) {
+            labels = [`Tháng ${selectedMonth}/${selectedYear}`];
+            chartLabel = `Doanh thu tháng ${selectedMonth}/${selectedYear}`;
+        } else if (selectedYear && !selectedMonth) {
+            // Hiển thị đầy đủ 12 tháng của năm được chọn (kể cả tháng có doanh thu = 0)
+            const monthData = [];
+            labels = [];
+            for (let month = 1; month <= 12; month++) {
+                const monthItem = data.find(item => item.month === month);
+                monthData.push(monthItem ? monthItem.total : 0);
+                labels.push(`Tháng ${month}`);
+            }
+            data = monthData.map((total, index) => ({
+                month: index + 1,
+                total: total
+            }));
+            chartLabel = `Doanh thu năm ${selectedYear}`;
+        } else {
+            labels = data.map(item => `${item.month}/${item.year}`);
+            chartLabel = 'Doanh thu theo tháng';
+        }
+    } else if (timeType === 'quarter') {
+        // Dữ liệu theo quý
+        data = allQuarterData;
+        if (selectedYear) {
+            data = allQuarterData.filter(item => item.year == selectedYear);
+        }
+        labels = data.map(item => 
+            selectedYear ? `Q${item.quarter}` : `Q${item.quarter}/${item.year}`
+        );
+        chartLabel = 'Doanh thu theo quý';
+    } else if (timeType === 'year') {
+   
+        if (selectedYear) {
+    
+            data = allRevenueData.filter(item => item.year == selectedYear);
+            const monthData = [];
+            labels = [];
+            for (let month = 1; month <= 12; month++) {
+                const monthItem = data.find(item => item.month === month);
+                monthData.push(monthItem ? monthItem.total : 0);
+                labels.push(`Tháng ${month}`);
+            }
+            data = monthData.map((total, index) => ({
+                month: index + 1,
+                total: total
+            }));
+            chartLabel = `Doanh thu năm ${selectedYear} (theo tháng)`;
+        } else {
+  
+            data = [];
+            labels = ['Vui lòng chọn năm để xem doanh thu theo tháng'];
+            chartLabel = 'Chọn năm để xem doanh thu';
+        }
+    }
+    
+    // Cập nhật biểu đồ
+    revenueChart.data.labels = labels;
+    revenueChart.data.datasets[0].data = data.map(item => item.total);
+    revenueChart.data.datasets[0].label = chartLabel;
+    revenueChart.update();
+}
+
+// Doanh thu theo tháng
+const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+revenueChart = new Chart(revenueCtx, {
+    type: 'bar',
+    data: {
+        labels: [{% for r in revenue_total %}"{{ r.month }}/{{ r.year }}",{% endfor %}],
+        datasets: [{
+            label: 'Doanh thu',
+            data: [{% for r in revenue_total %}{{ r.total }},{% endfor %}],
+            backgroundColor: '#82ca9d'
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Số lượng game đã bán theo category
+const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+new Chart(categoryCtx, {
+    type: 'bar',
+    data: {
+        labels: [{% for c in quantity_by_category %}"{{ c.category }}",{% endfor %}],
+        datasets: [{
+            label: 'Số lượng game đã bán',
+            data: [{% for c in quantity_by_category %}{{ c.quantity }},{% endfor %}],
+            backgroundColor: '#ffc658'
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Số lượng game đã bán theo tag
+const tagCtx = document.getElementById('tagChart').getContext('2d');
+new Chart(tagCtx, {
+    type: 'bar',
+    data: {
+        labels: [{% for t in quantity_by_tag %}"{{ t.tag }}",{% endfor %}],
+        datasets: [{
+            label: 'Số lượng game đã bán',
+            data: [{% for t in quantity_by_tag %}{{ t.quantity }},{% endfor %}],
+            backgroundColor: '#ff7f50'
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

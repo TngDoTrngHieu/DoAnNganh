@@ -76,7 +76,7 @@ def momo_webhook_view(request):
 
         else:
             payment.status = "FAILED"
-            order.status = "FAILED"
+            order.status = "CANCELLED"
             order.save()
 
         return Response({"message": "Payment updated"}, status=status.HTTP_200_OK)
